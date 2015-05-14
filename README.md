@@ -1,4 +1,6 @@
 # TicTacToe_Game
 The repository for the tic tac toe game for Comp Sci
 
-nothing yet
+Begin with singleplayer/multiplayer check
+Select regular or super mode
+Play
