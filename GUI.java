@@ -1,6 +1,9 @@
 package com.game.ttt;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,21 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class GUI extends JFrame {
+public class GUI extends JFrame implements ActionListener {
 	
-	JButton tl = new JButton("Top Left");
-	JButton tm = new JButton("Top Middle");
-	JButton tr = new JButton("Top Right");
-		
-	JButton ml = new JButton("Left Middle");
-	JButton mm = new JButton("Middle");
-	JButton mr = new JButton("Right Middle");
-		
-	JButton bl = new JButton("Bottom Left");
-	JButton bm = new JButton("Bottom Middle");
-	JButton br = new JButton("Bottom Right");
-		
-	//do something like bl.addActionListener(whatever) for setting the function
+	GameCalcs ttt = new GameCalcs();
+	JButton[] buttray = new JButton[9];
 
 	public GUI() {
 		initUI();
@@ -32,11 +24,36 @@ public class GUI extends JFrame {
 		JPanel panel = new JPanel();
 			
 		panel.setBorder(BorderFactory.createEmptyBorder(3,3,5,5));
-		panel.setLayout(new GridLayout(3,3,5,5));
+		panel.setLayout(new GridLayout(3,3,10,10));
 			
 		String[] buttons = {"Top Left", "Top Middle", "Top Right", "Middle Left", "Middle", "Middle Right", "Bottom Left", "Bottom Middle", "Bottom Right"};
+		
+		for(int i = 0; i < buttons.length; i++) {
+			buttray[i] = new JButton(buttons[i]);
+			panel.add(buttray[i]);
+			buttray[i].addActionListener(this);
+		}
+		
+		add(panel);
+		
+		setTitle("Tic Tac Toe Simulator 2k15");
+		setSize(500,500);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 		
 	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				GUI gui = new GUI();
+				gui.setVisible(true);
+			}
+		});
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		System.out.println(event.getActionCommand());
+		System.out.println(event.paramString());
 	}	
 }
