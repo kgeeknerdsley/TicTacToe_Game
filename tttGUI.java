@@ -22,6 +22,8 @@ public class tttGUI extends JFrame {
 	JButton bl = new JButton("Bottom Left");
 	JButton bm = new JButton("Bottom Middle");
 	JButton br = new JButton("Bottom Right");
+	
+	//do something like bl.addActionListener(whatever) for setting the function
 
 	public tttGUI() {
 		initUI();
