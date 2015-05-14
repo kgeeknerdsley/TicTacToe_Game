@@ -1,6 +1,5 @@
 # TicTacToe_Game
 The repository for the tic tac toe game for Comp Sci
 
-Begin with singleplayer/multiplayer check
-Select regular or super mode
-Play
+Note: 
+Button identification can be done through its position on buttray[]
