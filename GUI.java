@@ -55,5 +55,10 @@ public class GUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		System.out.println(event.getActionCommand());
 		System.out.println(event.paramString());
+		
+		if(event.getSource() == buttray[5]) { //tests for middle right, as example
+			System.out.println("It worked");
+		}
 	}	
+}
 }
