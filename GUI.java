@@ -21,11 +21,11 @@ public class GUI extends JFrame implements ActionListener {
 	JButton[] buttray = new JButton[9];
 
 	public GUI() {
-		initUI();
+		initGridUI();
+		initStatsUI();
 	}
 		
-	private void initUI() {
-		JFrame mwindow = new JFrame();
+	private void initGridUI() {
 		
 		//buttons
 		JPanel panel = new JPanel();
@@ -42,19 +42,19 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		
 		add(panel);
-		
-		/*
-		 * THIS PART IS CURRENTLY BROKEN 
-		displays state of game board
-		JLabel boardDisplayer = new JLabel(ttt.boardDisplay());
-		mwindow.getContentPane().add(BorderLayout.EAST, boardDisplayer);
-		*/
-		
+				
 		//master window setup
-		mwindow.setTitle("Tic Tac Toe Simulator 2k15");
-		mwindow.setSize(500,500);
-		mwindow.setLocationRelativeTo(null);
-		mwindow.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Tic Tac Toe Simulator 2k15: The Buttons");
+		setSize(500,500);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	private void initStatsUI() {
+		setTitle("Tic Tac Toe Simulator 2k15: The Monitor");
+		setSize(500, 250);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	public static void main(String[] args) {
