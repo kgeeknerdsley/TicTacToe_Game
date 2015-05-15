@@ -1,17 +1,25 @@
 package com.game.ttt;
 
+import java.util.Arrays;
+
 public class GameCalcs {
+	String gameboard[][];
 	
 	public GameCalcs() {
-		String[][] gameboard = new String[3][3];
+		gameboard = new String[3][3];
 	}
 	
 	public String boardDisplay() {
-		return "Testing one two three";
+		testFiller();
+		return Arrays.toString(gameboard);
 	}
 	
 	
-	public void monitor() {
-		
+	public void testFiller() {
+		for(int i = 0; i < gameboard.length; i++) {
+			for(int j = 0; j < gameboard[0].length; j++) {
+				gameboard[i][j] = "X";
+			}
+		}
 	}
 }
