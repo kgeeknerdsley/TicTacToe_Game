@@ -1,19 +1,10 @@
 package com.game.ttt;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener {
 	
@@ -22,7 +13,6 @@ public class GUI extends JFrame implements ActionListener {
 
 	public GUI() {
 		initGridUI();
-		initStatsUI();
 	}
 		
 	private void initGridUI() {
@@ -50,18 +40,13 @@ public class GUI extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
-	private void initStatsUI() {
-		setTitle("Tic Tac Toe Simulator 2k15: The Monitor");
-		setSize(500, 250);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
-	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				GUI gui = new GUI();
 				gui.setVisible(true);
+				GUIDisplay statgui = new GUIDisplay();
+				statgui.setVisible(true);
 			}
 		});
 	}
@@ -72,6 +57,8 @@ public class GUI extends JFrame implements ActionListener {
 		System.out.println(event.paramString());
 		
 		if(event.getSource() == buttray[5]) { //tests for middle right, as example
+			System.out.println("Buttes");
 		}
-	}	
+	}
+
 }
