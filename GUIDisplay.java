@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class GUIDisplay extends JFrame {
 	GameCalcs ttt = new GameCalcs();
+	boolean gameRunning = true;
 	
 	public GUIDisplay() {
 		initUI();
@@ -20,6 +21,10 @@ public class GUIDisplay extends JFrame {
 		setSize(250,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		//while(gameRunning) {
+			board.setText(ttt.boardDisplay());
+		//}
 		
 	}
 	
