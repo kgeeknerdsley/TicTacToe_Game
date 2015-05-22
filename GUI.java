@@ -57,7 +57,7 @@ public class GUI extends JFrame implements ActionListener {
 		System.out.println(event.paramString());
 		
 		if(event.getSource() == buttray[5]) { //tests for middle right, as example
-			System.out.println("Buttes");
+			ttt.boardUpdateX(5);
 		}
 	}
 
