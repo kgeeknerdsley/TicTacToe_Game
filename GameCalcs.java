@@ -3,14 +3,19 @@ package com.game.ttt;
 import java.util.Arrays;
 
 public class GameCalcs {
-	String gameboard[][];
+	String gameboard[][]; 
 
 	public GameCalcs() {
 		gameboard = new String[3][3];
 	}
 
 	public String boardDisplay() {
-		return "bugfix!";
+		
+		if(winner == true) {
+			return "hawt buoys";
+		} else {
+			return "you suck, X";
+		}
 	}
 
 	public void boardPrinter() {
@@ -76,8 +81,13 @@ public class GameCalcs {
 		}
 	}
 
+	//precondition: a 3x3 array with string values of X and O
+	//postcondition: true if X wins the game, false if O wins
 	public boolean winTest() {
-		boolean winner = null; //true if X wins, false if O wins
-
+		boolean winner = true; //true if X wins, false if O wins
+		//for()
+		//	if((array[] && array[] && array[]) || array[] && array[] && array[] || array[] && array[] && array[] || 
+		return winner;
 	}
+
 }
