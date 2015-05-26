@@ -48,10 +48,10 @@ public class GameCalcs {
 				break;
 		}
 	}
-	
+
 	public void boardUpdateO(int identifier) {
 		String move = "O";
-		
+
 		switch(identifier) {
 		case 0: gameboard[0][0] = move;
 				break;
@@ -74,5 +74,10 @@ public class GameCalcs {
 		case 9: gameboard[2][3] = move;
 				break;
 		}
+	}
+
+	public boolean winTest() {
+		boolean winner = null; //true if X wins, false if O wins
+
 	}
 }
