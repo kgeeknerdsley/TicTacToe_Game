@@ -54,78 +54,114 @@ public class GUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		//System.out.println(event.getActionCommand());
-		//System.out.println(event.paramString());
+		System.out.println(event.getActionCommand());
+		System.out.println(event.paramString());
 
 		if(event.getSource() == buttray[0]) { //upper left
 			if(turn) {
 				ttt.boardUpdateX(0);
+				buttray[0].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(0);
+				buttray[0].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[1]) { //upper middle
 			if(turn) {
 				ttt.boardUpdateX(1);
+				buttray[1].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(1);
+				buttray[1].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[2]) { //upper right
 			if(turn) {
 				ttt.boardUpdateX(2);
+				buttray[2].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(2);
+				buttray[2].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[3]) { //middle left
 			if(turn) {
 				ttt.boardUpdateX(3);
+				buttray[3].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(3);
+				buttray[3].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[4]) { //middle middle
 			if(turn) {
 				ttt.boardUpdateX(4);
+				buttray[4].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(4);
+				buttray[4].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[5]) { //middle right
 			if(turn) {
 				ttt.boardUpdateX(5);
+				buttray[5].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(5);
+				buttray[5].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[6]) { //bottom left
 			if(turn) {
 				ttt.boardUpdateX(6);
+				buttray[6].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(6);
+				buttray[6].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[7]) { //bottom middle
 			if(turn) {
 				ttt.boardUpdateX(7);
+				buttray[7].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(7);
+				buttray[7].setText("O");
+				turn = true;
 			}
 		}
 
 		if(event.getSource() == buttray[8]) { //bottom right
 			if(turn) {
 				ttt.boardUpdateX(8);
+				buttray[8].setText("X");
+				turn = false;
 			} else if(turn == false) {
 				ttt.boardUpdateO(8);
+				buttray[8].setText("O");
+				turn = true;
 			}
 		}
 	}
