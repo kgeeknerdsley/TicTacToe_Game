@@ -10,6 +10,7 @@ public class GUI extends JFrame implements ActionListener {
 
 	GameCalcs ttt = new GameCalcs();
 	JButton[] buttray = new JButton[9];
+	boolean turn = true; //true for X, false for O
 
 	public GUI() {
 		initGridUI();
@@ -57,39 +58,75 @@ public class GUI extends JFrame implements ActionListener {
 		//System.out.println(event.paramString());
 
 		if(event.getSource() == buttray[0]) { //upper left
-			ttt.boardUpdate(0);
+			if(turn) {
+				ttt.boardUpdateX(0);
+			} else if(turn == false) {
+				ttt.boardUpdateO(0);
+			}
 		}
 
 		if(event.getSource() == buttray[1]) { //upper middle
-			ttt.boardUpdate(1);
+			if(turn) {
+				ttt.boardUpdateX(1);
+			} else if(turn == false) {
+				ttt.boardUpdateO(1);
+			}
 		}
 
 		if(event.getSource() == buttray[2]) { //upper right
-			ttt.boardUpdate(2);
+			if(turn) {
+				ttt.boardUpdateX(2);
+			} else if(turn == false) {
+				ttt.boardUpdateO(2);
+			}
 		}
 
 		if(event.getSource() == buttray[3]) { //middle left
-			ttt.boardUpdate(3);
+			if(turn) {
+				ttt.boardUpdateX(3);
+			} else if(turn == false) {
+				ttt.boardUpdateO(3);
+			}
 		}
 
 		if(event.getSource() == buttray[4]) { //middle middle
-			ttt.boardUpdate(4);
+			if(turn) {
+				ttt.boardUpdateX(4);
+			} else if(turn == false) {
+				ttt.boardUpdateO(4);
+			}
 		}
 
 		if(event.getSource() == buttray[5]) { //middle right
-			ttt.boardUpdate(5);
+			if(turn) {
+				ttt.boardUpdateX(5);
+			} else if(turn == false) {
+				ttt.boardUpdateO(5);
+			}
 		}
 
 		if(event.getSource() == buttray[6]) { //bottom left
-			ttt.boardUpdate(6);
+			if(turn) {
+				ttt.boardUpdateX(6);
+			} else if(turn == false) {
+				ttt.boardUpdateO(6);
+			}
 		}
 
 		if(event.getSource() == buttray[7]) { //bottom middle
-			ttt.boardUpdate(7);
+			if(turn) {
+				ttt.boardUpdateX(7);
+			} else if(turn == false) {
+				ttt.boardUpdateO(7);
+			}
 		}
 
 		if(event.getSource() == buttray[8]) { //bottom right
-			ttt.boardUpdate(8);
+			if(turn) {
+				ttt.boardUpdateX(8);
+			} else if(turn == false) {
+				ttt.boardUpdateO(8);
+			}
 		}
 	}
 
