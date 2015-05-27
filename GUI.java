@@ -4,14 +4,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener {
 
+	//instances of other classes in proj
 	GameCalcs ttt = new GameCalcs();
+	AIBrain ai = new AIBrain();
+
 	JButton[] buttray = new JButton[9];
 	boolean turn = true; //true for X, false for O
+	private JLabel statusbar;
+	Timer timer = new Timer();
 
 	public GUI() {
 		initGridUI();
@@ -41,22 +47,32 @@ public class GUI extends JFrame implements ActionListener {
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		//Little message bar!
+		statusbar = new JLabel("Welcome to Tic Tac Toe Simulator 2015!");
+        statusbar.setBorder(BorderFactory.createEtchedBorder());
+        add(statusbar, BorderLayout.SOUTH);
 	}
-	
+
 	private void initMenuUI() {
 		JMenuBar menu = new JMenuBar();
 		//Do this last, with saved file loc
 		//ImageIcon icon = new ImageIcon();
-		
+
 		JMenu file = new JMenu("File");
 		file.setMnemonic(KeyEvent.VK_F);
-		
+
 		JMenu settings = new JMenu("Settings");
 		settings.setMnemonic(KeyEvent.VK_S);
-		
+
 		JMenuItem hItem = new JMenuItem("Help");
 		hItem.setMnemonic(KeyEvent.VK_H);
-		
+		hItem.setToolTipText("Provides author information and game instructions");
+
+		//JMenuItem aiSets = new JMenuItem("AI Settings");
+		//aiSets.setMnemonic(KeyEvent.VK_A);
+		//aiSets.setToolTipText("Allows customization of AI from random to actually competent");
+
 		JMenuItem eItem = new JMenuItem("Exit"); //add icon as second parameter later
 		eItem.setMnemonic(KeyEvent.VK_E);
 		eItem.setToolTipText("Exit game");
@@ -66,27 +82,32 @@ public class GUI extends JFrame implements ActionListener {
 				System.exit(0);
 			}
 		});
-		
-		
-		JMenuItem aiSets = new JMenuItem("AI Settings");
-		aiSets.setMnemonic(KeyEvent.VK_A);
-		aiSets.setToolTipText("Allows customization of AI from random to actually competent");
-		aiSets.addActionListener(new ActionListener() {
+
+		//AI toggle switch
+		JCheckBoxMenuItem aiToggle = new JCheckBoxMenuItem("Toggle AI");
+		aiToggle.setDisplayedMnemonicIndex(5); //what do?
+		aiToggle.setSelected(false);
+
+		aiToggle.addItemListener(new ItemListener() {
 			@Override
-			public void actionPerformed(ActionEvent event3) {
-				//figure out how to do sub menus
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					statusbar.setVisible(true);
+					statusbar.setText(timer.schedule(new speak(), 0, 10000));
+				} else {
+					statusbar.setVisible(false);
+				}
 			}
 		});
-		
-		
+
 		file.add(eItem);
-		settings.add(aiSets);
-		
+		settings.add(aiToggle);
+
 		menu.add(file);
 		menu.add(settings);
 		menu.add(hItem);
-		
-		
+
+
 		setJMenuBar(menu);
 	}
 
@@ -101,8 +122,8 @@ public class GUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		System.out.println(event.getActionCommand());
-		System.out.println(event.paramString());
+		//System.out.println(event.getActionCommand());
+		//System.out.println(event.paramString());
 
 		if(event.getSource() == buttray[0]) { //upper left
 			if(turn) {
