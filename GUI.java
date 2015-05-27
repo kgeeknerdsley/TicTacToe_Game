@@ -8,6 +8,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import java.util.*;
+
 public class GUI extends JFrame implements ActionListener {
 
 	//instances of other classes in proj
