@@ -77,7 +77,8 @@ public class GameCalcs {
 	}
 
 	public boolean winTest() {
-		boolean winner = null; //true if X wins, false if O wins
+		boolean winner; //true if X wins, false if O wins
+		return false;
 
 	}
 }
