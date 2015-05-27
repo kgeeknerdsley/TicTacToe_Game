@@ -3,6 +3,7 @@ package com.game.ttt;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
@@ -14,6 +15,7 @@ public class GUI extends JFrame implements ActionListener {
 
 	public GUI() {
 		initGridUI();
+		initMenuUI();
 	}
 
 	private void initGridUI() {
@@ -35,10 +37,57 @@ public class GUI extends JFrame implements ActionListener {
 		add(panel);
 
 		//master window setup
-		setTitle("Tic Tac Toe Simulator 2k15: The Buttons");
+		setTitle("Tic Tac Toe Simulator 2k15");
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	private void initMenuUI() {
+		JMenuBar menu = new JMenuBar();
+		//Do this last, with saved file loc
+		//ImageIcon icon = new ImageIcon();
+		
+		JMenu file = new JMenu("File");
+		file.setMnemonic(KeyEvent.VK_F);
+		
+		JMenu settings = new JMenu("Settings");
+		settings.setMnemonic(KeyEvent.VK_S);
+		
+		JMenuItem hItem = new JMenuItem("Help");
+		hItem.setMnemonic(KeyEvent.VK_H);
+		
+		JMenuItem eItem = new JMenuItem("Exit"); //add icon as second parameter later
+		eItem.setMnemonic(KeyEvent.VK_E);
+		eItem.setToolTipText("Exit game");
+		eItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
+			}
+		});
+		
+		
+		JMenuItem aiSets = new JMenuItem("AI Settings");
+		aiSets.setMnemonic(KeyEvent.VK_A);
+		aiSets.setToolTipText("Allows customization of AI from random to actually competent");
+		aiSets.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event3) {
+				//figure out how to do sub menus
+			}
+		});
+		
+		
+		file.add(eItem);
+		settings.add(aiSets);
+		
+		menu.add(file);
+		menu.add(settings);
+		menu.add(hItem);
+		
+		
+		setJMenuBar(menu);
 	}
 
 	public static void main(String[] args) {
@@ -46,8 +95,6 @@ public class GUI extends JFrame implements ActionListener {
 			public void run() {
 				GUI gui = new GUI();
 				gui.setVisible(true);
-				GUIDisplay statgui = new GUIDisplay();
-				statgui.setVisible(true);
 			}
 		});
 	}
