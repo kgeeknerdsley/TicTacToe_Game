@@ -10,6 +10,9 @@ public class GameCalcs {
 	Boolean winrar = new Boolean(null);
 	Boolean winrarX = new Boolean(null);
 	Boolean winrarO = new Boolean(null);
+	
+	Integer rowNum = new Integer(0);
+	Integer colNum = new Integer(0);
 
 	public GameCalcs() {
 		gameboard = new String[3][3];
@@ -41,6 +44,46 @@ public class GameCalcs {
 				break;
 		}
 	}
+	
+	public int buttonTranslator(int row, int col) {
+		if(row == 0 && col == 0) {
+			return 0;
+		}
+		
+		if(row == 0 && col == 1) {
+			return 1;
+		}
+		
+		if(row == 0 && col == 2) {
+			return 2;
+		}
+		
+		if(row == 1 && col == 0) {
+			return 3;
+		}
+		
+		if(row == 1 && col == 1) {
+			return 4;
+		}
+		
+		if(row == 1 && col == 2) {
+			return 5;
+		}
+		
+		if(row == 2 && col == 0) {
+			return 6;
+		}
+		
+		if(row == 2 && col == 1) {
+			return 7;
+		}
+		
+		if(row == 2 && col == 2) {
+			return 8;
+		}
+		
+		return -1;
+	}
 
 	public void boardUpdateO(int identifier) {
 		String move = "O";
@@ -69,15 +112,25 @@ public class GameCalcs {
 		}
 	}
 	
-	public void aiUpdateRand(int row, int col) {
-		if(gameboard[row][col] != null) {
-			gameboard[row][col] = "O";
+	public int aiUpdateRand(Integer rowNum, Integer colNum) {
+		if(gameboard[rowNum][colNum] != null) {
+			gameboard[rowNum][colNum] = "O";
 		} else {
 			int newrow = randgen.nextInt(3);
 			int newcol = randgen.nextInt(3);
 			
 			aiUpdateRand(newrow, newcol);
 		}
+		
+		return buttonTranslator(rowNum, colNum);
+	}
+	
+	public int getRow() {
+		return rowNum;
+	}
+	
+	public int getCol() {
+		return colNum;
 	}
 	
 	public boolean winTestX() {
