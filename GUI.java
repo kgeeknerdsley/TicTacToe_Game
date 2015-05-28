@@ -1,14 +1,12 @@
 package com.game.ttt;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.*;
 
 import javax.swing.*;
 
 import java.util.*;
+import java.util.Timer;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -18,6 +16,7 @@ public class GUI extends JFrame implements ActionListener {
 
 	JButton[] buttray = new JButton[9];
 	boolean turn = true; //true for X, false for O
+	boolean aiFlag = false;
 	private JLabel statusbar;
 	Timer timer = new Timer();
 
@@ -51,9 +50,10 @@ public class GUI extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		//Little message bar!
-		statusbar = new JLabel("Welcome to Tic Tac Toe Simulator 2015!");
+		statusbar = new JLabel("Welcome to Tic Tac Toe Simulator 2015! Currently in a 2 Player Game.");
         statusbar.setBorder(BorderFactory.createEtchedBorder());
         add(statusbar, BorderLayout.SOUTH);
+        statusbar.setVisible(true);
 	}
 
 	private void initMenuUI() {
@@ -94,10 +94,10 @@ public class GUI extends JFrame implements ActionListener {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if(e.getStateChange() == ItemEvent.SELECTED) {
-					statusbar.setVisible(true);
-					statusbar.setText(timer.schedule(new speak(), 0, 10000));
+					statusbar.setText(ai.introSpeak());
+					aiFlag = true;
 				} else {
-					statusbar.setVisible(false);
+					statusbar.setText("2 Player game is active.");
 				}
 			}
 		});
@@ -132,7 +132,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(0);
 				buttray[0].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(0);
 				buttray[0].setText("O");
 				turn = true;
@@ -144,7 +151,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(1);
 				buttray[1].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(1);
 				buttray[1].setText("O");
 				turn = true;
@@ -156,7 +170,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(2);
 				buttray[2].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(2);
 				buttray[2].setText("O");
 				turn = true;
@@ -168,7 +189,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(3);
 				buttray[3].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(3);
 				buttray[3].setText("O");
 				turn = true;
@@ -180,7 +208,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(4);
 				buttray[4].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(4);
 				buttray[4].setText("O");
 				turn = true;
@@ -192,7 +227,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(5);
 				buttray[5].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(5);
 				buttray[5].setText("O");
 				turn = true;
@@ -204,7 +246,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(6);
 				buttray[6].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(6);
 				buttray[6].setText("O");
 				turn = true;
@@ -216,7 +265,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(7);
 				buttray[7].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(7);
 				buttray[7].setText("O");
 				turn = true;
@@ -228,7 +284,14 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(8);
 				buttray[8].setText("X");
 				turn = false;
+				
+				if(aiFlag) {
+					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
+				}
 			} else if(turn == false) {
+				if(aiFlag) {
+					//call the ai board update command
+				}
 				ttt.boardUpdateO(8);
 				buttray[8].setText("O");
 				turn = true;
