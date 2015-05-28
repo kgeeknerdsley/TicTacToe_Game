@@ -158,7 +158,7 @@ public class GUI extends JFrame implements ActionListener {
 				ttt.boardUpdateX(0);
 				buttray[0].setText("X");
 
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -174,10 +174,12 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(0);
 				buttray[0].setText("O");
-				if(ttt.winTest()) {
+				
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
+				
 				turn = true;
 			}
 		}
@@ -186,7 +188,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(1);
 				buttray[1].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -201,7 +203,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(1);
 				buttray[1].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -213,7 +215,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(2);
 				buttray[2].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -228,7 +230,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(2);
 				buttray[2].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -240,7 +242,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(3);
 				buttray[3].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -255,7 +257,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(3);
 				buttray[3].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -267,7 +269,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(4);
 				buttray[4].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -282,7 +284,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(4);
 				buttray[4].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -294,7 +296,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(5);
 				buttray[5].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -309,7 +311,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(5);
 				buttray[5].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -321,7 +323,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(6);
 				buttray[6].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -336,7 +338,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(6);
 				buttray[6].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -348,7 +350,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(7);
 				buttray[7].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -363,7 +365,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(7);
 				buttray[7].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
@@ -375,7 +377,7 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(8);
 				buttray[8].setText("X");
-				if(ttt.winTest()) {
+				if(ttt.winTestX()) {
 					System.out.println("Game over!");
 					winBox("X is the winner!", "A winrar is you!");
 				}
@@ -390,7 +392,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(8);
 				buttray[8].setText("O");
-				if(ttt.winTest()) {
+				if(ttt.winTestO()) {
 					System.out.println("Game over!");
 					winBox("O is the winner!", "A winrar is you!");
 				}
