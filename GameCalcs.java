@@ -65,43 +65,53 @@ public class GameCalcs {
 				break;
 		}
 	}
-
-	public boolean winTest() {
-		//true if X wins, false if O wins
+	
+	public boolean winTestX() {
 		if(gameboard[0][0] == "X" && gameboard[1][0] == "X" && gameboard[2][0] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[0][1] == "X" && gameboard[1][1] == "X" && gameboard[2][1] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[0][2] == "X" && gameboard[1][2] == "X" && gameboard[2][2] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[0][0] == "X" && gameboard[0][1] == "X" && gameboard[0][2] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[1][0] == "X" && gameboard[1][1] == "X" && gameboard[1][2] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[2][0] == "X" && gameboard[2][1] == "X" && gameboard[2][2] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[0][0] == "X" && gameboard[1][1] == "X" && gameboard[2][2] == "X") {
-			winrar = true;
+			winrarX = true;
 		} else if(gameboard[0][2] == "X" && gameboard[1][1] == "X" && gameboard[2][0] == "X") {
-			winrar = true;
-		} else if(gameboard[0][0] == "O" && gameboard[1][0] == "O" && gameboard[2][0] == "O") {
-			winrar = false;
-		} else if(gameboard[0][1] == "O" && gameboard[1][1] == "O" && gameboard[2][1] == "O") {
-			winrar = false;
-		} else if(gameboard[0][2] == "O" && gameboard[1][2] == "O" && gameboard[2][2] == "O") {
-			winrar = false;
-		} else if(gameboard[0][0] == "O" && gameboard[0][1] == "O" && gameboard[0][2] == "O") {
-			winrar = false;
-		} else if(gameboard[1][0] == "O" && gameboard[1][1] == "O" && gameboard[1][2] == "O") {
-			winrar = false;
-		} else if(gameboard[2][0] == "O" && gameboard[2][1] == "O" && gameboard[2][2] == "O") {
-			winrar = false;
-		} else if(gameboard[0][0] == "O" && gameboard[1][1] == "O" && gameboard[2][2] == "O") {
-			winrar = false;
-		} else if(gameboard[0][2] == "O" && gameboard[1][1] == "O" && gameboard[2][0] == "O") {
-			winrar = false;
+			winrarX = true;
+		} else {
+			winrarX = false;
 		}
-		return winrar;
+		
+		return winrarX;
+	}
+	
+	public boolean winTestO() {
+		if(gameboard[0][0] == "O" && gameboard[1][0] == "O" && gameboard[2][0] == "O") {
+			winrarO = true;
+		} else if(gameboard[0][1] == "O" && gameboard[1][1] == "O" && gameboard[2][1] == "O") {
+			winrarO = true;
+		} else if(gameboard[0][2] == "O" && gameboard[1][2] == "O" && gameboard[2][2] == "O") {
+			winrarO = true;
+		} else if(gameboard[0][0] == "O" && gameboard[0][1] == "O" && gameboard[0][2] == "O") {
+			winrarO = true;
+		} else if(gameboard[1][0] == "O" && gameboard[1][1] == "O" && gameboard[1][2] == "O") {
+			winrarO = true;
+		} else if(gameboard[2][0] == "O" && gameboard[2][1] == "O" && gameboard[2][2] == "O") {
+			winrarO = true;
+		} else if(gameboard[0][0] == "O" && gameboard[1][1] == "O" && gameboard[2][2] == "O") {
+			winrarO = true;
+		} else if(gameboard[0][2] == "O" && gameboard[1][1] == "O" && gameboard[2][0] == "O") {
+			winrarO = true;
+		} else {
+			winrarO = false;
+		}
+		
+		return winrarO;
 	}
 
 	public void aiBoardUpdateRand() { //random ai moves to play
