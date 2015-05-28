@@ -13,7 +13,7 @@ public class GUI extends JFrame implements ActionListener {
 	//instances of other classes in proj
 	GameCalcs ttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
-	Timer timer = new Timer();
+	Random randg = new Random();
 
 	JButton[] buttray = new JButton[9];
 	int count = 0; //counts when a button is pressed
@@ -179,6 +179,17 @@ public class GUI extends JFrame implements ActionListener {
 	public void messageBox(String message, String title) {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.ERROR_MESSAGE);
 	}
+	
+	public int randomMove() {
+		int num = randg.nextInt(3);
+		return num;
+	}
+	
+	public int aiButtonChange() {
+		//returns the int of the button to change as well as modifying gameboard
+		int changeme = ttt.aiUpdateRand(randomMove(), randomMove());
+		return changeme;
+	}
 
 	//the main, runs the initial program
 	public static void main(String[] args) {
@@ -224,7 +235,10 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 0) {
+							buttray[0].setText("O");
+							but0 = true;
+						}
 					}
 					ttt.boardUpdateO(0);
 					buttray[0].setText("O");
@@ -266,7 +280,10 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 1) {
+							buttray[1].setText("O");
+							but1 = true;
+						}
 					}
 					ttt.boardUpdateO(1);
 					buttray[1].setText("O");
@@ -306,7 +323,10 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 2) {
+							buttray[2].setText("O");
+							but2 = true;
+						}
 					}
 					ttt.boardUpdateO(2);
 					buttray[2].setText("O");
@@ -345,7 +365,10 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 3) {
+							buttray[3].setText("O");
+							but3 = true;
+						}
 					}
 					ttt.boardUpdateO(3);
 					buttray[3].setText("O");
@@ -384,7 +407,10 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 4) {
+							buttray[4].setText("O");
+							but4 = true;
+						}
 					}
 					ttt.boardUpdateO(4);
 					buttray[4].setText("O");
@@ -422,7 +448,10 @@ public class GUI extends JFrame implements ActionListener {
 						but5 = true;
 					}
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 5) {
+							buttray[5].setText("O");
+							but5 = true;
+						}
 					}
 					ttt.boardUpdateO(5);
 					buttray[5].setText("O");
@@ -460,7 +489,10 @@ public class GUI extends JFrame implements ActionListener {
 						but6 = true;
 					}
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 6) {
+							buttray[6].setText("O");
+							but6 = true;
+						}
 					}
 					ttt.boardUpdateO(6);
 					buttray[6].setText("O");
@@ -499,7 +531,10 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 7) {
+							buttray[7].setText("O");
+							but7 = true;
+						}
 					}
 					ttt.boardUpdateO(7);
 					buttray[7].setText("O");
@@ -537,7 +572,10 @@ public class GUI extends JFrame implements ActionListener {
 						but8 = true;
 					}
 					if(aiFlag) {
-						//call the ai board update command
+						if(aiButtonChange() == 8) {
+							buttray[8].setText("O");
+							but8 = true;
+						}
 					}
 					ttt.boardUpdateO(8);
 					buttray[8].setText("O");
