@@ -85,6 +85,16 @@ public class GUI extends JFrame implements ActionListener {
 			}
 		});
 
+		JMenuItem resItem = new JMenuItem("New Game");
+		resItem.setMnemonic(KeyEvent.VK_N);
+		resItem.setToolTipText("Restarts the game");
+		resItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event2) {
+				gameRestart();
+			}
+		});
+
 		//AI toggle switch
 		JCheckBoxMenuItem aiToggle = new JCheckBoxMenuItem("Toggle AI");
 		aiToggle.setDisplayedMnemonicIndex(5); //what do?
@@ -98,11 +108,14 @@ public class GUI extends JFrame implements ActionListener {
 					aiFlag = true;
 				} else {
 					statusbar.setText("2 Player game is active.");
+					aiFlag = false;
 				}
 			}
 		});
 
+		file.add(resItem);
 		file.add(eItem);
+
 		settings.add(aiToggle);
 
 		menu.add(file);
@@ -111,6 +124,12 @@ public class GUI extends JFrame implements ActionListener {
 
 
 		setJMenuBar(menu);
+	}
+
+	public void gameRestart() {
+		dispose();
+		GUI guires = new GUI();
+		guires.setVisible(true);
 	}
 
 	public static void main(String[] args) {
@@ -131,8 +150,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(0);
 				buttray[0].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -142,6 +162,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(0);
 				buttray[0].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -150,8 +171,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(1);
 				buttray[1].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -161,6 +183,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(1);
 				buttray[1].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -169,8 +192,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(2);
 				buttray[2].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -180,6 +204,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(2);
 				buttray[2].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -188,8 +213,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(3);
 				buttray[3].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -199,6 +225,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(3);
 				buttray[3].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -207,8 +234,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(4);
 				buttray[4].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -218,6 +246,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(4);
 				buttray[4].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -226,8 +255,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(5);
 				buttray[5].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -237,6 +267,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(5);
 				buttray[5].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -245,8 +276,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(6);
 				buttray[6].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -256,6 +288,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(6);
 				buttray[6].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -264,8 +297,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(7);
 				buttray[7].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -275,6 +309,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(7);
 				buttray[7].setText("O");
+				ttt.winTest();
 				turn = true;
 			}
 		}
@@ -283,8 +318,9 @@ public class GUI extends JFrame implements ActionListener {
 			if(turn) {
 				ttt.boardUpdateX(8);
 				buttray[8].setText("X");
+				ttt.winTest();
 				turn = false;
-				
+
 				if(aiFlag) {
 					statusbar.setText(ai.moveSpeak()); //makes the ai taunt/speak
 				}
@@ -294,7 +330,12 @@ public class GUI extends JFrame implements ActionListener {
 				}
 				ttt.boardUpdateO(8);
 				buttray[8].setText("O");
+				ttt.winTest();
 				turn = true;
+			}
+
+			if(ttt.winTest()) {
+				System.out.println("Game over.");
 			}
 		}
 	}
