@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 public class GameCalcs {
 	String gameboard[][];
+	Boolean winrar = new Boolean(null);
+	Boolean winrarX = new Boolean(null);
+	Boolean winrarO = new Boolean(null);
 
 	public GameCalcs() {
 		gameboard = new String[3][3];
@@ -65,7 +68,6 @@ public class GameCalcs {
 
 	public boolean winTest() {
 		//true if X wins, false if O wins
-		boolean winrar = true;
 		if(gameboard[0][0] == "X" && gameboard[1][0] == "X" && gameboard[2][0] == "X") {
 			winrar = true;
 		} else if(gameboard[0][1] == "X" && gameboard[1][1] == "X" && gameboard[2][1] == "X") {
@@ -103,6 +105,6 @@ public class GameCalcs {
 	}
 
 	public void aiBoardUpdateRand() { //random ai moves to play
-		
+
 	}
 }
