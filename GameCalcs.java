@@ -1,8 +1,11 @@
 package com.game.ttt;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class GameCalcs {
+	Random randgen = new Random();
+	
 	String gameboard[][];
 	Boolean winrar = new Boolean(null);
 	Boolean winrarX = new Boolean(null);
@@ -66,6 +69,17 @@ public class GameCalcs {
 		}
 	}
 	
+	public void aiUpdateRand(int row, int col) {
+		if(gameboard[row][col] != null) {
+			gameboard[row][col] = "O";
+		} else {
+			int newrow = randgen.nextInt(3);
+			int newcol = randgen.nextInt(3);
+			
+			aiUpdateRand(newrow, newcol);
+		}
+	}
+	
 	public boolean winTestX() {
 		if(gameboard[0][0] == "X" && gameboard[1][0] == "X" && gameboard[2][0] == "X") {
 			winrarX = true;
@@ -112,9 +126,5 @@ public class GameCalcs {
 		}
 		
 		return winrarO;
-	}
-
-	public void aiBoardUpdateRand() { //random ai moves to play
-
 	}
 }
