@@ -9,19 +9,6 @@ public class GameCalcs {
 		gameboard = new String[3][3];
 	}
 
-	public String boardDisplay() {
-		return "bugfix!";
-	}
-
-	public void boardPrinter() {
-		for(int row = 0; row < gameboard.length; row++) {
-			for(int col= 0; col < gameboard[0].length; col++) {
-				System.out.print(gameboard[row][col] + " ");
-			}
-			System.out.println();
-		}
-	}
-
 	public void boardUpdateX(int identifier) {
 		String move = "X";
 
@@ -80,5 +67,9 @@ public class GameCalcs {
 		boolean winner; //true if X wins, false if O wins
 		return false;
 
+	}
+	
+	public void aiBoardUpdateRand() { //random ai moves to play
+		
 	}
 }
