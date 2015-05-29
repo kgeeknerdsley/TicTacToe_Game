@@ -1,4 +1,4 @@
-package com.game.sttt;
+package com.game.ttt;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,14 +6,15 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import java.util.*;
-import java.util.Timer;
+
 
 public class GUI extends JFrame implements ActionListener {
 
 	//instances of other classes in proj
-	GameCalcs sttt = new GameCalcs();
+	GameCalcs ttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
 	Random randg = new Random();
+	JFrame instr = new JFrame();
 
 	JButton[] buttray = new JButton[9];
 	int count = 0; //counts when a button is pressed
@@ -34,23 +35,23 @@ public class GUI extends JFrame implements ActionListener {
 	boolean but7 = false;
 	boolean but8 = false;
 
+	//creates the initial windows
 	public GUI() {
 		initGridUI();
 		initMenuUI();
 	}
 
+	//Creates window with buttons
 	private void initGridUI() {
 
 		//buttons
 		JPanel panel = new JPanel();
 
-		panel.setBorder(BorderFactory.createEmptyBorder(9,9,5,5));
-		panel.setLayout(new GridLayout(9,9,10,10));
+		panel.setBorder(BorderFactory.createEmptyBorder(3,3,5,5));
+		panel.setLayout(new GridLayout(3,3,10,10));
 
-		//Button Names (Order: "Small Board space, Large Board space"
-		String[] buttons = String[]{"Left Top, Top Left", "Center Top, Top Left", "Right Top, Top Left", "Left Top, Top Middle", "Center Top, Top Middle", "Right Top, Top Middle", "Left Top, Top Right", "Center Top, Top Right", "Right Top, Top Right", "Left Middle, Top Left", "Center Middle, Top Left", "Right Middle, Top Left", "Left Middle, Top Middle", "Center Middle, Top Middle", "Right Middle, Top Middle", "Left Middle, Top Right", "Center Middle, Top Right", "Right Middle, Top Right", "Left Bottom, Top Left", "Center Bottom, Top Left", "Right Bottom, Top Left", "Left Bottom, Top Middle", "Center Bottom, Top Middle", "Right Bottom, Top Middle", "Left Bottom, Top Right", "Center Bottom, Top Right", "Right Bottom, Top Right",
-				"Left Top, Middle Left", "Center Top, Middle Left", "Right Top, Middle Left", "Left Top, Middle Middle", "Center Top, Middle Middle", "Right Top, Middle Middle", "Left Top, Middle Right", "Center Top, Middle Right", "Right Top, Middle Right", "Left Middle, Middle Left", "Center Middle, Middle Left", "Right Middle, Middle Left", "Left Middle, Middle Middle", "Center Middle, Middle Middle", "Right Middle, Middle Middle", "Left Middle, Middle Right", "Center Middle, Middle Right", "Right Middle, Middle Right", "Left Bottom, Middle Left", "Center Bottom, Middle Left", "Right Bottom, Middle Left", "Left Bottom, Middle Middle", "Center Bottom, Middle Middle", "Right Bottom, Middle Middle", "Left Bottom, Middle Right", "Center Bottom, Middle Right", "Right Bottom, Middle Right",
-				"Left Top, Bottom Left", "Center Top, Bottom Left", "Right Top, Bottom Left", "Left Top, Bottom Middle", "Center Top, Bottom Middle", "Right Top, Bottom Middle", "Left Top, Bottom Right", "Center Top, Bottom Right", "Right Top, Bottom Right", "Left Middle, Bottom Left", "Center Middle, Bottom Left", "Right Middle, Bottom Left", "Left Middle, Bottom Middle", "Center Middle, Bottom Middle", "Right Middle, Bottom Middle", "Left Middle, Bottom Right", "Center Middle, Bottom Right", "Right Middle, Bottom Right", "Left Bottom, Bottom Left", "Center Bottom, Bottom Left", "Right Bottom, Bottom Left", "Left Bottom, Bottom Middle", "Center Bottom, Bottom Middle", "Right Bottom, Bottom Middle", "Left Bottom, Bottom Right", "Center Bottom, Bottom Right", "Right Bottom, Bottom Right"};
+		//String[] buttons = {"Top Left", "Top Middle", "Top Right", "Middle Left", "Middle", "Middle Right", "Bottom Left", "Bottom Middle", "Bottom Right"};
+		String[] buttons = {"", "", "", "", "", "", "", "", ""};
 
 		for(int i = 0; i < buttons.length; i++) {
 			buttray[i] = new JButton(buttons[i]);
@@ -61,13 +62,13 @@ public class GUI extends JFrame implements ActionListener {
 		add(panel);
 
 		//master window setup
-		setTitle("Souper Tick Tack Poe Simulator 2k16");
+		setTitle("Tic Tac Toe Simulator 2k15");
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		//Little message bar!
-		statusbar = new JLabel("Welcome to Souper Tick Tack Poe Simulator 2016! Currently in a 2 Player Game.");
+		statusbar = new JLabel("Welcome to Tic Tac Toe Simulator 2015! Currently in a 2 Player Game.");
         statusbar.setBorder(BorderFactory.createEtchedBorder());
         add(statusbar, BorderLayout.SOUTH);
         statusbar.setVisible(true);
@@ -87,6 +88,15 @@ public class GUI extends JFrame implements ActionListener {
 		JMenuItem hItem = new JMenuItem("Help");
 		hItem.setMnemonic(KeyEvent.VK_H);
 		hItem.setToolTipText("Provides author information and game instructions");
+
+		JMenuItem instItem = new JMenuItem("Instructions");
+		instItem.setToolTipText("How to play");
+		instItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event4) {
+
+			}
+		});
 
 		JMenuItem kindSetting = new JMenuItem("AI Personality");
 		kindSetting.setToolTipText("Changes whether the AI is nice or snarky");
@@ -148,6 +158,10 @@ public class GUI extends JFrame implements ActionListener {
 		});
 
 		//menu addition hierarchy (ARE IN ORDER, DO NOT SCREW WITH PLZ)
+		menu.add(file);
+		menu.add(settings);
+		menu.add(hItem);
+
 		file.add(resItem);
 		file.add(eItem);
 
@@ -156,11 +170,12 @@ public class GUI extends JFrame implements ActionListener {
 		settings.add(kindSet);
 		settings.add(snarkSet);
 
-		menu.add(file);
-		menu.add(settings);
-		menu.add(hItem);
 
 		setJMenuBar(menu);
+	}
+
+	public void instructionBox() {
+		instr.setTitle("Instructions");
 	}
 
 	//called to restart game from menu option
@@ -260,7 +275,6 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[1]) { //upper middle
 			if(but1 == false) {
 				if(turn) {
-					;
 					ttt.boardUpdateX(1);
 					buttray[1].setText("X");
 					if(ttt.winTestX()) {
