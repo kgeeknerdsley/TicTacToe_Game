@@ -1,4 +1,4 @@
-package com.game.ttt;
+package com.game.sttt;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -11,7 +11,7 @@ import java.util.Timer;
 public class GUI extends JFrame implements ActionListener {
 
 	//instances of other classes in proj
-	GameCalcs ttt = new GameCalcs();
+	GameCalcs sttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
 	Random randg = new Random();
 
@@ -22,7 +22,7 @@ public class GUI extends JFrame implements ActionListener {
 	boolean aiSnark = false; //true if snarky, false if nice
 	boolean aiSmart = false; //true if actually trying, false if just random
 	private JLabel statusbar;
-	
+
 	//button pressed flags
 	boolean but0 = false;
 	boolean but1 = false;
@@ -33,7 +33,6 @@ public class GUI extends JFrame implements ActionListener {
 	boolean but6 = false;
 	boolean but7 = false;
 	boolean but8 = false;
-	
 
 	public GUI() {
 		initGridUI();
@@ -45,10 +44,13 @@ public class GUI extends JFrame implements ActionListener {
 		//buttons
 		JPanel panel = new JPanel();
 
-		panel.setBorder(BorderFactory.createEmptyBorder(3,3,5,5));
-		panel.setLayout(new GridLayout(3,3,10,10));
+		panel.setBorder(BorderFactory.createEmptyBorder(9,9,5,5));
+		panel.setLayout(new GridLayout(9,9,10,10));
 
-		String[] buttons = {"Top Left", "Top Middle", "Top Right", "Middle Left", "Middle", "Middle Right", "Bottom Left", "Bottom Middle", "Bottom Right"};
+		//Button Names (Order: "Small Board space, Large Board space"
+		String[] buttons = String[]{"Left Top, Top Left", "Center Top, Top Left", "Right Top, Top Left", "Left Top, Top Middle", "Center Top, Top Middle", "Right Top, Top Middle", "Left Top, Top Right", "Center Top, Top Right", "Right Top, Top Right", "Left Middle, Top Left", "Center Middle, Top Left", "Right Middle, Top Left", "Left Middle, Top Middle", "Center Middle, Top Middle", "Right Middle, Top Middle", "Left Middle, Top Right", "Center Middle, Top Right", "Right Middle, Top Right", "Left Bottom, Top Left", "Center Bottom, Top Left", "Right Bottom, Top Left", "Left Bottom, Top Middle", "Center Bottom, Top Middle", "Right Bottom, Top Middle", "Left Bottom, Top Right", "Center Bottom, Top Right", "Right Bottom, Top Right",
+				"Left Top, Middle Left", "Center Top, Middle Left", "Right Top, Middle Left", "Left Top, Middle Middle", "Center Top, Middle Middle", "Right Top, Middle Middle", "Left Top, Middle Right", "Center Top, Middle Right", "Right Top, Middle Right", "Left Middle, Middle Left", "Center Middle, Middle Left", "Right Middle, Middle Left", "Left Middle, Middle Middle", "Center Middle, Middle Middle", "Right Middle, Middle Middle", "Left Middle, Middle Right", "Center Middle, Middle Right", "Right Middle, Middle Right", "Left Bottom, Middle Left", "Center Bottom, Middle Left", "Right Bottom, Middle Left", "Left Bottom, Middle Middle", "Center Bottom, Middle Middle", "Right Bottom, Middle Middle", "Left Bottom, Middle Right", "Center Bottom, Middle Right", "Right Bottom, Middle Right",
+				"Left Top, Bottom Left", "Center Top, Bottom Left", "Right Top, Bottom Left", "Left Top, Bottom Middle", "Center Top, Bottom Middle", "Right Top, Bottom Middle", "Left Top, Bottom Right", "Center Top, Bottom Right", "Right Top, Bottom Right", "Left Middle, Bottom Left", "Center Middle, Bottom Left", "Right Middle, Bottom Left", "Left Middle, Bottom Middle", "Center Middle, Bottom Middle", "Right Middle, Bottom Middle", "Left Middle, Bottom Right", "Center Middle, Bottom Right", "Right Middle, Bottom Right", "Left Bottom, Bottom Left", "Center Bottom, Bottom Left", "Right Bottom, Bottom Left", "Left Bottom, Bottom Middle", "Center Bottom, Bottom Middle", "Right Bottom, Bottom Middle", "Left Bottom, Bottom Right", "Center Bottom, Bottom Right", "Right Bottom, Bottom Right"};
 
 		for(int i = 0; i < buttons.length; i++) {
 			buttray[i] = new JButton(buttons[i]);
@@ -59,13 +61,13 @@ public class GUI extends JFrame implements ActionListener {
 		add(panel);
 
 		//master window setup
-		setTitle("Tic Tac Toe Simulator 2k15");
+		setTitle("Souper Tick Tack Poe Simulator 2k16");
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		//Little message bar!
-		statusbar = new JLabel("Welcome to Tic Tac Toe Simulator 2015! Currently in a 2 Player Game.");
+		statusbar = new JLabel("Welcome to Souper Tick Tack Poe Simulator 2016! Currently in a 2 Player Game.");
         statusbar.setBorder(BorderFactory.createEtchedBorder());
         add(statusbar, BorderLayout.SOUTH);
         statusbar.setVisible(true);
@@ -88,7 +90,7 @@ public class GUI extends JFrame implements ActionListener {
 
 		JMenuItem kindSetting = new JMenuItem("AI Personality");
 		kindSetting.setToolTipText("Changes whether the AI is nice or snarky");
-		
+
 		JMenuItem kindSet = new JMenuItem("Kind AI Personality");
 		kindSet.addActionListener(new ActionListener() {
 			@Override
@@ -96,7 +98,7 @@ public class GUI extends JFrame implements ActionListener {
 				aiSnark = false;
 			}
 		});
-		
+
 		JMenuItem snarkSet = new JMenuItem("Snarky AI Personality");
 		snarkSet.addActionListener(new ActionListener() {
 			@Override
@@ -153,7 +155,7 @@ public class GUI extends JFrame implements ActionListener {
 		settings.addSeparator();
 		settings.add(kindSet);
 		settings.add(snarkSet);
-		
+
 		menu.add(file);
 		menu.add(settings);
 		menu.add(hItem);
@@ -175,16 +177,16 @@ public class GUI extends JFrame implements ActionListener {
 		GUI wingui = new GUI();
 		wingui.setVisible(true);
 	}
-	
+
 	public void messageBox(String message, String title) {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.ERROR_MESSAGE);
 	}
-	
+
 	public int randomMove() {
 		int num = randg.nextInt(3);
 		return num;
 	}
-	
+
 	public int aiButtonChange() {
 		//returns the int of the button to change as well as modifying gameboard
 		int changeme = ttt.aiUpdateRand(randomMove(), randomMove());
@@ -214,14 +216,14 @@ public class GUI extends JFrame implements ActionListener {
 					but0 = true;
 					ttt.boardUpdateX(0);
 					buttray[0].setText("X");
-	
+
 					if(ttt.winTestX()) {
 						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
-	
+
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -233,7 +235,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(but0 == false) {
 						but0 = true;
 					}
-					
+
 					if(aiFlag) {
 						if(aiButtonChange() == 0) {
 							buttray[0].setText("O");
@@ -242,12 +244,12 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					ttt.boardUpdateO(0);
 					buttray[0].setText("O");
-					
+
 					if(ttt.winTestO()) {
 						System.out.println("Game over!");
 						winBox("O is the winner!", "A winrar is you!");
 					}
-					
+
 					turn = true;
 				}
 			} else {
@@ -266,7 +268,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -278,7 +280,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(but1 == false) {
 						but1 = true;
 					}
-					
+
 					if(aiFlag) {
 						if(aiButtonChange() == 1) {
 							buttray[1].setText("O");
@@ -290,7 +292,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(ttt.winTestO()) {
 						System.out.println("Game over!");
 						winBox("O is the winner!", "A winrar is you!");
-						
+
 					}
 					turn = true;
 				}
@@ -309,7 +311,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -321,7 +323,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(but2 == false) {
 						but2 = true;
 					}
-					
+
 					if(aiFlag) {
 						if(aiButtonChange() == 2) {
 							buttray[2].setText("O");
@@ -351,7 +353,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -363,7 +365,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(but3 == false) {
 						but3 = true;
 					}
-					
+
 					if(aiFlag) {
 						if(aiButtonChange() == 3) {
 							buttray[3].setText("O");
@@ -393,7 +395,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -405,7 +407,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(but4 == false) {
 						but4 = true;
 					}
-					
+
 					if(aiFlag) {
 						if(aiButtonChange() == 4) {
 							buttray[4].setText("O");
@@ -435,7 +437,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -476,7 +478,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -517,7 +519,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -529,7 +531,7 @@ public class GUI extends JFrame implements ActionListener {
 					if(but7 == false) {
 						but7 = true;
 					}
-					
+
 					if(aiFlag) {
 						if(aiButtonChange() == 7) {
 							buttray[7].setText("O");
@@ -559,7 +561,7 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
-	
+
 					if(aiFlag) {
 						if(aiSnark) {
 							statusbar.setText(ai.moveSpeakSnarky());
@@ -585,14 +587,14 @@ public class GUI extends JFrame implements ActionListener {
 					}
 					turn = true;
 				}
-				
+
 				if(ttt.winTestX() == false && ttt.winTestO() == false && butFlagState()) {
 					winBox("You're both losers! You tied!", "No one is the winrar.");
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
 			}
-		} 
+		}
 	}
 
 	public boolean butFlagState() {
