@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Button extends JButton {
 	GameCalcs calc = new GameCalcs();
-	DialogBoxes dialog = new DialogBoxes();
+
 
 	boolean isPressed;
 	int ident;
@@ -37,6 +37,7 @@ public class Button extends JButton {
 	public void pressedX() {
 		calc.boardUpdateX(ident);
 		setX();
+		setPress(true);
 	}
 
 	public void pressedO() {
