@@ -16,24 +16,13 @@ public class GUI extends JFrame implements ActionListener {
 	Random randg = new Random();
 	JFrame instr = new JFrame();
 
-	JButton[] buttray = new JButton[9];
+	Button[] buttray = new Button[9];
 	int count = 0; //counts when a button is pressed
 	boolean turn = true; //true for X, false for O
 	boolean aiFlag = false;
 	boolean aiSnark = false; //true if snarky, false if nice
 	boolean aiSmart = false; //true if actually trying, false if just random
 	private JLabel statusbar;
-
-	//button pressed flags
-	boolean but0 = false;
-	boolean but1 = false;
-	boolean but2 = false;
-	boolean but3 = false;
-	boolean but4 = false;
-	boolean but5 = false;
-	boolean but6 = false;
-	boolean but7 = false;
-	boolean but8 = false;
 
 	//creates the initial windows
 	public GUI() {
@@ -51,10 +40,10 @@ public class GUI extends JFrame implements ActionListener {
 		panel.setLayout(new GridLayout(3,3,10,10));
 
 		//String[] buttons = {"Top Left", "Top Middle", "Top Right", "Middle Left", "Middle", "Middle Right", "Bottom Left", "Bottom Middle", "Bottom Right"};
-		String[] buttons = {"", "", "", "", "", "", "", "", ""};
+		//String[] buttons = {"", "", "", "", "", "", "", "", ""};
 
-		for(int i = 0; i < buttons.length; i++) {
-			buttray[i] = new JButton(buttons[i]);
+		for(int i = 0; i < 8; i++) {
+			buttray[i] = new Button();
 			panel.add(buttray[i]);
 			buttray[i].addActionListener(this);
 		}
@@ -226,9 +215,8 @@ public class GUI extends JFrame implements ActionListener {
 		//System.out.println(event.paramString());
 
 		if(event.getSource() == buttray[0]) { //upper left
-			if(but0 == false) {
+			if(!buttray[0].isPressed()) {
 				if(turn) {
-					but0 = true;
 					ttt.boardUpdateX(0);
 					buttray[0].setText("X");
 
@@ -247,14 +235,13 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(but0 == false) {
-						but0 = true;
+					if(!buttray[0].isPressed()) {
+						buttray[0].setPress(true);
 					}
 
 					if(aiFlag) {
 						if(aiButtonChange() == 0) {
 							buttray[0].setText("O");
-							but0 = true;
 						}
 					}
 					ttt.boardUpdateO(0);
@@ -273,7 +260,7 @@ public class GUI extends JFrame implements ActionListener {
 		}
 
 		if(event.getSource() == buttray[1]) { //upper middle
-			if(but1 == false) {
+			if(!buttray[1].isPressed()) {
 				if(turn) {
 					ttt.boardUpdateX(1);
 					buttray[1].setText("X");
@@ -291,14 +278,14 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(but1 == false) {
-						but1 = true;
+					if(!buttray[1].isPressed()) {
+						buttray[1].setPress(true);
 					}
 
 					if(aiFlag) {
 						if(aiButtonChange() == 1) {
 							buttray[1].setText("O");
-							but1 = true;
+							buttray[1].setPress(true);
 						}
 					}
 					ttt.boardUpdateO(1);
@@ -316,7 +303,7 @@ public class GUI extends JFrame implements ActionListener {
 		}
 
 		if(event.getSource() == buttray[2]) { //upper right
-			if(but2 == false) {
+			if(!buttray[2].isPressed()) {
 				if(turn) {
 					ttt.boardUpdateX(2);
 					buttray[2].setText("X");
@@ -334,14 +321,14 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(but2 == false) {
-						but2 = true;
+					if(!buttray[2].isPressed()) {
+						buttray[2].setPress(true);
 					}
 
 					if(aiFlag) {
 						if(aiButtonChange() == 2) {
 							buttray[2].setText("O");
-							but2 = true;
+							buttray[2].setPress(true);
 						}
 					}
 					ttt.boardUpdateO(2);
@@ -358,7 +345,7 @@ public class GUI extends JFrame implements ActionListener {
 		}
 
 		if(event.getSource() == buttray[3]) { //middle left
-			if(but3 == false) {
+			if(!buttray[3].isPressed()) {
 				if(turn) {
 					ttt.boardUpdateX(3);
 					buttray[3].setText("X");
@@ -376,14 +363,14 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(but3 == false) {
-						but3 = true;
+					if(!buttray[3].isPressed()) {
+						buttray[1].setPress(true);
 					}
 
 					if(aiFlag) {
 						if(aiButtonChange() == 3) {
 							buttray[3].setText("O");
-							but3 = true;
+							buttray[1].setPress(true);
 						}
 					}
 					ttt.boardUpdateO(3);
@@ -612,10 +599,11 @@ public class GUI extends JFrame implements ActionListener {
 	}
 
 	public boolean butFlagState() {
-		if(but0 && but1 && but2 && but3 && but4 && but5 && but6 && but7 && but8) {
-			return true;
-		} else {
-			return false;
+		for(int i = 0; i < 8; i++) {
+			if(buttray[i].isPressed) {
+				return true;
+			}
 		}
+		return false;
 	}
 }
