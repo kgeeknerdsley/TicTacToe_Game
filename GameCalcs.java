@@ -135,7 +135,7 @@ public class GameCalcs {
 	}
 	
 	public int randomMove() {
-		int num = randg.nextInt(3);
+		int num = randgen.nextInt(3);
 		return num;
 	}
 
@@ -185,5 +185,39 @@ public class GameCalcs {
 		}
 
 		return winrarO;
+	}
+	
+	public boolean tieTest() {
+		int fillcount = 0;
+		boolean nulltest = false; // returns true if the test passes (no null values)
+		boolean wintestX = false;
+		boolean wintestO = false;
+		
+		for(int row = 0; row < gameboard.length; row++) {
+			for(int col = 0; col < gameboard[0].length; col++) {
+				if(gameboard[row][col] != null) {
+					fillcount++;
+				}
+			}
+		}
+		
+		if(fillcount == 9) {
+			nulltest = true;
+		}
+		
+		if(winTestX()) {
+			wintestX = true;
+		}
+		
+		if(winTestO()) {
+			wintestO = true;
+		}
+		
+		if(nulltest && wintestX && wintestO) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 }
