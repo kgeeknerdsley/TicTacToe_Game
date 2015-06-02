@@ -182,26 +182,17 @@ public class GUI extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.ERROR_MESSAGE);
 	}
 
-	public int randomMove() {
-		int num = randg.nextInt(3);
-		return num;
-	}
-
-	public int aiButtonChange() {
-		//returns the int of the button to change as well as modifying gameboard
-		int changeme = ttt.aiUpdateRand(randomMove(), randomMove());
-		return changeme;
+	public boolean butFlagState() {
+		for(int i = 0; i < 8; i++) {
+			if(buttray[i].isPressed) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	//the main, runs the initial program
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				GUI gui = new GUI();
-				gui.setVisible(true);
-			}
-		});
-	}
+
 
 	//THE BUTTON ACTIONS
 	@Override
@@ -587,12 +578,12 @@ public class GUI extends JFrame implements ActionListener {
 		}
 	}
 
-	public boolean butFlagState() {
-		for(int i = 0; i < 8; i++) {
-			if(buttray[i].isPressed) {
-				return true;
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				GUI gui = new GUI();
+				gui.setVisible(true);
 			}
-		}
-		return false;
+		});
 	}
 }
