@@ -1,3 +1,4 @@
+
 package com.game.ttt;
 
 import java.util.Arrays;
@@ -5,12 +6,12 @@ import java.util.Random;
 
 public class GameCalcs {
 	Random randgen = new Random();
-	
+
 	String gameboard[][];
 	Boolean winrar = new Boolean(null);
 	Boolean winrarX = new Boolean(null);
 	Boolean winrarO = new Boolean(null);
-	
+
 	Integer rowNum = new Integer(0);
 	Integer colNum = new Integer(0);
 
@@ -44,44 +45,44 @@ public class GameCalcs {
 				break;
 		}
 	}
-	
+
 	public int buttonTranslator(int row, int col) {
 		if(row == 0 && col == 0) {
 			return 0;
 		}
-		
+
 		if(row == 0 && col == 1) {
 			return 1;
 		}
-		
+
 		if(row == 0 && col == 2) {
 			return 2;
 		}
-		
+
 		if(row == 1 && col == 0) {
 			return 3;
 		}
-		
+
 		if(row == 1 && col == 1) {
 			return 4;
 		}
-		
+
 		if(row == 1 && col == 2) {
 			return 5;
 		}
-		
+
 		if(row == 2 && col == 0) {
 			return 6;
 		}
-		
+
 		if(row == 2 && col == 1) {
 			return 7;
 		}
-		
+
 		if(row == 2 && col == 2) {
 			return 8;
 		}
-		
+
 		return -1;
 	}
 
@@ -111,28 +112,33 @@ public class GameCalcs {
 				break;
 		}
 	}
-	
+
 	public int aiUpdateRand(Integer rowNum, Integer colNum) {
 		if(gameboard[rowNum][colNum] != null) {
 			gameboard[rowNum][colNum] = "O";
 		} else {
 			int newrow = randgen.nextInt(3);
 			int newcol = randgen.nextInt(3);
-			
+
 			aiUpdateRand(newrow, newcol);
 		}
-		
+
 		return buttonTranslator(rowNum, colNum);
 	}
-	
+
 	public int getRow() {
 		return rowNum;
 	}
-	
+
 	public int getCol() {
 		return colNum;
 	}
 	
+	public int randomMove() {
+		int num = randg.nextInt(3);
+		return num;
+	}
+
 	public boolean winTestX() {
 		if(gameboard[0][0] == "X" && gameboard[1][0] == "X" && gameboard[2][0] == "X") {
 			winrarX = true;
@@ -153,10 +159,10 @@ public class GameCalcs {
 		} else {
 			winrarX = false;
 		}
-		
+
 		return winrarX;
 	}
-	
+
 	public boolean winTestO() {
 		if(gameboard[0][0] == "O" && gameboard[1][0] == "O" && gameboard[2][0] == "O") {
 			winrarO = true;
@@ -177,7 +183,7 @@ public class GameCalcs {
 		} else {
 			winrarO = false;
 		}
-		
+
 		return winrarO;
 	}
 }
