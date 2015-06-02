@@ -10,7 +10,6 @@ public class GUI extends JFrame implements ActionListener {
 	//instances of other classes in proj
 	GameCalcs ttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
-	DialogBoxes diag = new DialogBoxes();
 
 	Random randg = new Random();
 	JFrame instr = new JFrame();
@@ -182,18 +181,6 @@ public class GUI extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.ERROR_MESSAGE);
 	}
 
-	public boolean butFlagState() {
-		for(int i = 0; i < 8; i++) {
-			if(buttray[i].isPressed) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	//the main, runs the initial program
-
-
 	//THE BUTTON ACTIONS
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -215,25 +202,21 @@ public class GUI extends JFrame implements ActionListener {
 							statusbar.setText(ai.moveSpeakNice());
 						}
 					}
+					
 				} else if(turn == false) {
 					if(!buttray[0].isPressed()) {
 						buttray[0].setPress(true);
-					}
+						
+						buttray[0].pressedO();
 
-					if(aiFlag) {
-						if(aiButtonChange() == 0) {
-							buttray[0].setText("O");
+						if(ttt.winTestO()) {
+							winBox("O is the winner!", "A winrar is you!");
 						}
-					}
-					buttray[0].pressedO();
 
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
+						turn = true;
 					}
-
-					turn = true;
 				}
+				
 			} else {
 				messageBox("Illegal move!", "Oops!");
 			}
@@ -242,10 +225,8 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[1]) { //upper middle
 			if(!buttray[1].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(1);
-					buttray[1].setText("X");
+					buttray[1].pressedX();
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -260,22 +241,13 @@ public class GUI extends JFrame implements ActionListener {
 				} else if(turn == false) {
 					if(!buttray[1].isPressed()) {
 						buttray[1].setPress(true);
-					}
-
-					if(aiFlag) {
-						if(aiButtonChange() == 1) {
-							buttray[1].setText("O");
-							buttray[1].setPress(true);
+						
+						buttray[1].pressedO();
+						if(ttt.winTestO()) {
+							winBox("O is the winner!", "A winrar is you!");
 						}
+						turn = true;
 					}
-					ttt.boardUpdateO(1);
-					buttray[1].setText("O");
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
-
-					}
-					turn = true;
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
@@ -285,10 +257,8 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[2]) { //upper right
 			if(!buttray[2].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(2);
-					buttray[2].setText("X");
+					buttray[2].pressedX();
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -303,21 +273,16 @@ public class GUI extends JFrame implements ActionListener {
 				} else if(turn == false) {
 					if(!buttray[2].isPressed()) {
 						buttray[2].setPress(true);
+						
+						buttray[2].pressedO();
+						if(ttt.winTestO()) {
+							System.out.println("Game over!");
+							winBox("O is the winner!", "A winrar is you!");
+						}
+						turn = true;
 					}
 
-					if(aiFlag) {
-						if(aiButtonChange() == 2) {
-							buttray[2].setText("O");
-							buttray[2].setPress(true);
-						}
-					}
-					ttt.boardUpdateO(2);
-					buttray[2].setText("O");
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
-					}
-					turn = true;
+					
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
@@ -327,10 +292,8 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[3]) { //middle left
 			if(!buttray[3].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(3);
-					buttray[3].setText("X");
+					buttray[3].pressedX();
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -344,22 +307,15 @@ public class GUI extends JFrame implements ActionListener {
 					}
 				} else if(turn == false) {
 					if(!buttray[3].isPressed()) {
-						buttray[1].setPress(true);
-					}
-
-					if(aiFlag) {
-						if(aiButtonChange() == 3) {
-							buttray[3].setText("O");
-							buttray[1].setPress(true);
+						buttray[3].setPress(true);
+						
+						buttray[3].pressedO();
+						if(ttt.winTestO()) {
+							System.out.println("Game over!");
+							winBox("O is the winner!", "A winrar is you!");
 						}
+						turn = true;
 					}
-					ttt.boardUpdateO(3);
-					buttray[3].setText("O");
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
-					}
-					turn = true;
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
@@ -369,10 +325,8 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[4]) { //middle middle
 			if(!buttray[4].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(4);
-					buttray[4].setText("X");
+					buttray[4].pressedX();
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -388,17 +342,9 @@ public class GUI extends JFrame implements ActionListener {
 					if(!buttray[4].isPressed()) {
 						buttray[4].setPress(true);
 					}
-
-					if(aiFlag) {
-						if(aiButtonChange() == 4) {
-							buttray[4].setText("O");
-							buttray[4].setPress(true);
-						}
-					}
-					ttt.boardUpdateO(4);
-					buttray[4].setText("O");
+					buttray[4].pressedO();
+					
 					if(ttt.winTestO()) {
-						System.out.println("Game over!");
 						winBox("O is the winner!", "A winrar is you!");
 					}
 					turn = true;
@@ -411,10 +357,9 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[5]) { //middle right
 			if(!buttray[5].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(5);
-					buttray[5].setText("X");
+					buttray[5].pressedX();
+					
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -429,20 +374,14 @@ public class GUI extends JFrame implements ActionListener {
 				} else if(turn == false) {
 					if(!buttray[5].isPressed()) {
 						buttray[5].setPress(true);
-					}
-					if(aiFlag) {
-						if(aiButtonChange() == 5) {
-							buttray[5].setText("O");
-							buttray[5].setPress(true);
+						
+						buttray[5].pressedO();
+						if(ttt.winTestO()) {
+							System.out.println("Game over!");
+							winBox("O is the winner!", "A winrar is you!");
 						}
-					}
-					ttt.boardUpdateO(5);
-					buttray[5].setText("O");
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
-					}
-					turn = true;
+						turn = true;
+					}	
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
@@ -452,8 +391,7 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[6]) { //bottom left
 			if(!buttray[6].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(6);
-					buttray[6].setText("X");
+					buttray[6].pressedX();
 					if(ttt.winTestX()) {
 						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
@@ -470,20 +408,13 @@ public class GUI extends JFrame implements ActionListener {
 				} else if(turn == false) {
 					if(!buttray[6].isPressed()) {
 						buttray[6].setPress(true);
-					}
-					if(aiFlag) {
-						if(aiButtonChange() == 6) {
-							buttray[6].setText("O");
-							buttray[6].setPress(true);
+						
+						buttray[6].pressedO();
+						if(ttt.winTestO()) {
+							winBox("O is the winner!", "A winrar is you!");
 						}
+						turn = true;
 					}
-					ttt.boardUpdateO(6);
-					buttray[6].setText("O");
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
-					}
-					turn = true;
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
@@ -493,10 +424,8 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[7]) { //bottom middle
 			if(!buttray[7].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(7);
-					buttray[7].setText("X");
+					buttray[7].pressedX();
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -513,16 +442,8 @@ public class GUI extends JFrame implements ActionListener {
 						buttray[7].setPress(true);
 					}
 
-					if(aiFlag) {
-						if(aiButtonChange() == 7) {
-							buttray[7].setText("O");
-							buttray[7].setPress(true);
-						}
-					}
-					ttt.boardUpdateO(7);
-					buttray[7].setText("O");
+					buttray[7].pressedO();
 					if(ttt.winTestO()) {
-						System.out.println("Game over!");
 						winBox("O is the winner!", "A winrar is you!");
 					}
 					turn = true;
@@ -535,10 +456,8 @@ public class GUI extends JFrame implements ActionListener {
 		if(event.getSource() == buttray[8]) { //bottom right
 			if(!buttray[8].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(8);
-					buttray[8].setText("X");
+					buttray[8].pressedX();
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 					turn = false;
@@ -553,29 +472,20 @@ public class GUI extends JFrame implements ActionListener {
 				} else if(turn == false) {
 					if(!buttray[8].isPressed()) {
 						buttray[8].setPress(true);
-					}
-					if(aiFlag) {
-						if(aiButtonChange() == 8) {
-							buttray[8].setText("O");
-							buttray[8].setPress(true);
+						
+						buttray[8].pressedO();
+						if(ttt.winTestO()) {
+							System.out.println("Game over!");
+							winBox("O is the winner!", "A winrar is you!");
 						}
+						turn = true;
 					}
-					ttt.boardUpdateO(8);
-					buttray[8].setText("O");
-					if(ttt.winTestO()) {
-						System.out.println("Game over!");
-						winBox("O is the winner!", "A winrar is you!");
-					}
-					turn = true;
 				}
-
-				if(ttt.winTestX() == false && ttt.winTestO() == false && butFlagState()) {
-					winBox("You're both losers! You tied!", "No one is the winrar.");
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
 			}
 		}
+	
+	if(ttt.tieTest()) {
+		winBox("You've tied!", "Sucks to your assmar"); //i am broken, something's up!
 	}
 
 	public static void main(String[] args) {
