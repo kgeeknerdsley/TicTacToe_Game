@@ -2,18 +2,15 @@ package com.game.ttt;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 import java.util.*;
-
 
 public class GUI extends JFrame implements ActionListener {
 
 	//instances of other classes in proj
 	GameCalcs ttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
-	//Menu menu = new Menu();
+	DialogBoxes diag = new DialogBoxes();
 
 	Random randg = new Random();
 	JFrame instr = new JFrame();
@@ -42,7 +39,7 @@ public class GUI extends JFrame implements ActionListener {
 		panel.setLayout(new GridLayout(3,3,10,10));
 
 		for(int i = 0; i < 9; i++) {
-			buttray[i] = new Button();
+			buttray[i] = new Button(i);
 			panel.add(buttray[i]);
 			buttray[i].addActionListener(this);
 		}
@@ -209,19 +206,13 @@ public class GUI extends JFrame implements ActionListener {
 	//THE BUTTON ACTIONS
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		//debug commands, leave commented out if not needed/remove for release
-		//System.out.println(event.getActionCommand());
-		//System.out.println(event.paramString());
-
 		if(event.getSource() == buttray[0]) { //upper left
 			if(!buttray[0].isPressed()) {
 				if(turn) {
-					ttt.boardUpdateX(0);
-					buttray[0].setText("X");
+					buttray[0].pressedX();
 
 					if(ttt.winTestX()) {
-						System.out.println("Game over!");
-						winBox("X is the winner!", "A winrar is you!");
+						winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
 					}
 
 					turn = false;
@@ -243,8 +234,7 @@ public class GUI extends JFrame implements ActionListener {
 							buttray[0].setText("O");
 						}
 					}
-					ttt.boardUpdateO(0);
-					buttray[0].setText("O");
+					buttray[0].pressedO();
 
 					if(ttt.winTestO()) {
 						System.out.println("Game over!");
