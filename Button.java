@@ -40,7 +40,7 @@ public class Button extends JButton {
 		setPress(true);
 	}
 
-	public void pressedO() {
+	public void pressedO(int bnum) {
 		ttt.boardUpdateO(bnum);
 		setO();
 	}
