@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class Button extends JButton {
-	GameCalcs calc = new GameCalcs();
+	GameCalcs ttt = new GameCalcs();
 
 
 	boolean isPressed;
@@ -34,14 +34,14 @@ public class Button extends JButton {
 		setText("O");
 	}
 
-	public void pressedX() {
-		calc.boardUpdateX(ident);
+	public void pressedX(int bnum) {
+		ttt.boardUpdateX(bnum);
 		setX();
 		setPress(true);
 	}
 
 	public void pressedO() {
-		calc.boardUpdateO(ident);
+		ttt.boardUpdateO(bnum);
 		setO();
 	}
 }
