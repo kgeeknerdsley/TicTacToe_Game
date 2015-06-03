@@ -307,10 +307,10 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(!buttray[2].isPressed(2)) {
+					if(!buttray[2].isPressed()) {
 						buttray[2].setPress(true);
 
-						buttray[2].pressedO();
+						buttray[2].pressedO(2);
 						if(ttt.winTestO()) {
 							System.out.println("Game over!");
 							winBox("O is the winner!", "A winrar is you!");
@@ -357,10 +357,10 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(!buttray[3].isPressed(3)) {
+					if(!buttray[3].isPressed()) {
 						buttray[3].setPress(true);
 
-						buttray[3].pressedO();
+						buttray[3].pressedO(3);
 						count += ttt.buttonTally();
 
 						if(ttt.winTestO()) {
@@ -406,10 +406,10 @@ public class GUI extends JFrame implements ActionListener {
 						}
 					}
 				} else if(turn == false) {
-					if(!buttray[4].isPressed(4)) {
+					if(!buttray[4].isPressed()) {
 						buttray[4].setPress(true);
 					}
-					buttray[4].pressedO();
+					buttray[4].pressedO(4);
 					count += ttt.buttonTally();
 
 					if(ttt.winTestO()) {
