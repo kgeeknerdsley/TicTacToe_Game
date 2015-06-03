@@ -1,7 +1,6 @@
-
 package com.game.ttt;
 
-import java.util.Arrays;
+
 import java.util.Random;
 
 public class GameCalcs {
@@ -205,11 +204,11 @@ public class GameCalcs {
 			nulltest = true;
 		}
 		
-		if(winTestX()) {
+		if(!winTestX()) {
 			wintestX = true;
 		}
 		
-		if(winTestO()) {
+		if(!winTestO()) {
 			wintestO = true;
 		}
 		
