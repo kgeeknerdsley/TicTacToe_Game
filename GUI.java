@@ -69,16 +69,16 @@ public class GUI extends JFrame implements ActionListener {
 		JMenu settings = new JMenu("AI Settings");
 		settings.setMnemonic(KeyEvent.VK_S);
 
-		JMenuItem hItem = new JMenuItem("Help");
-		hItem.setMnemonic(KeyEvent.VK_H);
-		hItem.setToolTipText("Provides author information and game instructions");
+		JMenuItem help = new JMenuItem("Help");
+		help.setMnemonic(KeyEvent.VK_H);
+		help.setToolTipText("Provides game instructions");
 
 		JMenuItem instItem = new JMenuItem("Instructions");
 		instItem.setToolTipText("How to play");
 		instItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event4) {
-
+				
 			}
 		});
 
@@ -122,7 +122,7 @@ public class GUI extends JFrame implements ActionListener {
 				gameRestart();
 			}
 		});
-
+		
 		//AI toggle switch
 		JCheckBoxMenuItem aiToggle = new JCheckBoxMenuItem("Toggle AI");
 		aiToggle.setDisplayedMnemonicIndex(5); //what do?
@@ -144,7 +144,6 @@ public class GUI extends JFrame implements ActionListener {
 		//menu addition hierarchy (ARE IN ORDER, DO NOT SCREW WITH PLZ)
 		menu.add(file);
 		menu.add(settings);
-		menu.add(hItem);
 
 		file.add(resItem);
 		file.add(eItem);
@@ -153,13 +152,10 @@ public class GUI extends JFrame implements ActionListener {
 		settings.addSeparator();
 		settings.add(kindSet);
 		settings.add(snarkSet);
+		
 
 
 		setJMenuBar(menu);
-	}
-
-	public void instructionBox() {
-		instr.setTitle("Instructions");
 	}
 
 	//called to restart game from menu option
@@ -191,6 +187,10 @@ public class GUI extends JFrame implements ActionListener {
 
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
+					}
+					
+					if(ttt.tieTest()) {
+						winBox("Draw!", "Tie!");
 					}
 
 					turn = false;
@@ -483,11 +483,10 @@ public class GUI extends JFrame implements ActionListener {
 				}
 			}
 		}
-	
-	if(ttt.tieTest()) {
-		winBox("You've tied!", "Sucks to your assmar"); //i am broken, something's up!
 	}
-
+	
+	//make method to tally the null buttons after each press to trigger the tie test
+	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
