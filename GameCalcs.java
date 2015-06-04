@@ -1,6 +1,5 @@
 package com.game.ttt;
 
-
 import java.util.Random;
 
 public class GameCalcs {
@@ -132,7 +131,7 @@ public class GameCalcs {
 	public int getCol() {
 		return colNum;
 	}
-	
+
 	public int randomMove() {
 		int num = randgen.nextInt(3);
 		return num;
@@ -185,13 +184,21 @@ public class GameCalcs {
 
 		return winrarO;
 	}
-	
+
+	public int buttonTally() {
+		int buttally = 0;
+
+		buttally++;
+
+		return buttally;
+	}
+
 	public boolean tieTest() {
 		int fillcount = 0;
 		boolean nulltest = false; // returns true if the test passes (no null values)
 		boolean wintestX = false;
 		boolean wintestO = false;
-		
+
 		for(int row = 0; row < gameboard.length; row++) {
 			for(int col = 0; col < gameboard[0].length; col++) {
 				if(gameboard[row][col] != null) {
@@ -199,24 +206,35 @@ public class GameCalcs {
 				}
 			}
 		}
-		
+
 		if(fillcount == 9) {
 			nulltest = true;
 		}
-		
+
 		if(!winTestX()) {
 			wintestX = true;
 		}
-		
+
 		if(!winTestO()) {
 			wintestO = true;
 		}
-		
+
 		if(nulltest && wintestX && wintestO) {
 			return true;
 		} else {
 			return false;
 		}
-		
+
+	}
+
+	public void boardPrinter() {
+		String tempboard = "";
+		for(int row = 0; row < gameboard.length; row++) {
+			for(int col = 0; col < gameboard[0].length; col++) {
+				tempboard += gameboard[row][col];
+			}
+		}
+
+		System.out.println(tempboard);
 	}
 }
