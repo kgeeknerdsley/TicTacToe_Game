@@ -6,8 +6,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class GUI extends JFrame implements ActionListener {
-
-	//instances of other classes in proj
+	//instances of other classes in project
 	GameCalcs ttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
 
@@ -68,19 +67,6 @@ public class GUI extends JFrame implements ActionListener {
 
 		JMenu settings = new JMenu("AI Settings");
 		settings.setMnemonic(KeyEvent.VK_S);
-
-		JMenuItem help = new JMenuItem("Help");
-		help.setMnemonic(KeyEvent.VK_H);
-		help.setToolTipText("Provides game instructions");
-
-		JMenuItem instItem = new JMenuItem("Instructions");
-		instItem.setToolTipText("How to play");
-		instItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event4) {
-
-			}
-		});
 
 		JMenuItem kindSetting = new JMenuItem("AI Personality");
 		kindSetting.setToolTipText("Changes whether the AI is nice or snarky");
@@ -153,8 +139,6 @@ public class GUI extends JFrame implements ActionListener {
 		settings.add(kindSet);
 		settings.add(snarkSet);
 
-
-
 		setJMenuBar(menu);
 	}
 
@@ -189,16 +173,12 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[0].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
 					}
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 
 					turn = false;
 
@@ -219,17 +199,13 @@ public class GUI extends JFrame implements ActionListener {
 						buttray[0].setO();
 						ttt.boardPrinter();
 
-						//count += ttt.buttonTally();
-
 						if(ttt.winTestO()) {
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 							if(ttt.tieTest()) {
 								winBox("Draw!", "Tie!");
 							}
-						//}
 
 						turn = true;
 					}
@@ -249,17 +225,13 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[1].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 
 					turn = false;
 
@@ -279,17 +251,13 @@ public class GUI extends JFrame implements ActionListener {
 						buttray[1].setO();
 						ttt.boardPrinter();
 
-						//count += ttt.buttonTally();
-
 						if(ttt.winTestO()) {
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 
 						turn = true;
 					}
@@ -314,11 +282,9 @@ public class GUI extends JFrame implements ActionListener {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 
 					turn = false;
 
@@ -343,16 +309,12 @@ public class GUI extends JFrame implements ActionListener {
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 							if(ttt.tieTest()) {
 								winBox("Draw!", "Tie!");
 							}
-						//}
 
 						turn = true;
 					}
-
-
 				}
 			} else {
 				messageBox("Illegal move!", "Oops!");
@@ -368,17 +330,13 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[3].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = false;
 
 					if(aiFlag) {
@@ -397,18 +355,14 @@ public class GUI extends JFrame implements ActionListener {
 						buttray[3].setO();
 						ttt.boardPrinter();
 
-						//count += ttt.buttonTally();
-
 						if(ttt.winTestO()) {
 							System.out.println("Game over!");
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 							if(ttt.tieTest()) {
 								winBox("Draw!", "Tie!");
 							}
-						//}
 						turn = true;
 					}
 				}
@@ -426,17 +380,13 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[4].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = false;
 
 					if(aiFlag) {
@@ -455,17 +405,13 @@ public class GUI extends JFrame implements ActionListener {
 					buttray[4].setO();
 					ttt.boardPrinter();
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestO()) {
 						winBox("O is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = true;
 				}
 			} else {
@@ -482,17 +428,13 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[5].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = false;
 
 					if(aiFlag) {
@@ -511,18 +453,14 @@ public class GUI extends JFrame implements ActionListener {
 						buttray[5].setO();
 						ttt.boardPrinter();
 
-						//count += ttt.buttonTally();
-
 						if(ttt.winTestO()) {
 							System.out.println("Game over!");
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 							if(ttt.tieTest()) {
 								winBox("Draw!", "Tie!");
 							}
-						//}
 						turn = true;
 					}
 				}
@@ -540,18 +478,14 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[6].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						System.out.println("Game over!");
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = false;
 
 					if(aiFlag) {
@@ -570,17 +504,13 @@ public class GUI extends JFrame implements ActionListener {
 						buttray[6].setO();
 						ttt.boardPrinter();
 
-						//count += ttt.buttonTally();
-
 						if(ttt.winTestO()) {
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 							if(ttt.tieTest()) {
 								winBox("Draw!", "Tie!");
 							}
-						//}
 						turn = true;
 					}
 				}
@@ -598,17 +528,13 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[7].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = false;
 
 					if(aiFlag) {
@@ -628,17 +554,13 @@ public class GUI extends JFrame implements ActionListener {
 					buttray[7].setO();
 					ttt.boardPrinter();
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestO()) {
 						winBox("O is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = true;
 				}
 			} else {
@@ -655,17 +577,13 @@ public class GUI extends JFrame implements ActionListener {
 					ttt.boardPrinter();
 					buttray[8].setPress(true);
 
-					//count += ttt.buttonTally();
-
 					if(ttt.winTestX()) {
 						winBox("X is the winner!", "A winrar is you!");
 					}
 
-					//if(count == 9) {
 						if(ttt.tieTest()) {
 							winBox("Draw!", "Tie!");
 						}
-					//}
 					turn = false;
 
 					if(aiFlag) {
@@ -689,11 +607,9 @@ public class GUI extends JFrame implements ActionListener {
 							winBox("O is the winner!", "A winrar is you!");
 						}
 
-						//if(count == 9) {
 							if(ttt.tieTest()) {
 								winBox("Draw!", "Tie!");
 							}
-						//}
 						turn = true;
 					}
 				}
@@ -704,7 +620,6 @@ public class GUI extends JFrame implements ActionListener {
 	}
 
 	//make method to tally the null buttons after each press to trigger the tie test
-
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
