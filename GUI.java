@@ -78,7 +78,7 @@ public class GUI extends JFrame implements ActionListener {
 		instItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event4) {
-				
+
 			}
 		});
 
@@ -122,7 +122,7 @@ public class GUI extends JFrame implements ActionListener {
 				gameRestart();
 			}
 		});
-		
+
 		//AI toggle switch
 		JCheckBoxMenuItem aiToggle = new JCheckBoxMenuItem("Toggle AI");
 		aiToggle.setDisplayedMnemonicIndex(5); //what do?
@@ -152,8 +152,6 @@ public class GUI extends JFrame implements ActionListener {
 		settings.addSeparator();
 		settings.add(kindSet);
 		settings.add(snarkSet);
-		
-
 
 		setJMenuBar(menu);
 	}
@@ -183,35 +181,37 @@ public class GUI extends JFrame implements ActionListener {
 		if(null != event.getSource()) {
 			if(event.getSource() instanceof Button) {
 				Button button = (Button) event.getSource();
-				
+
 				if(!button.isPressed()) {
 					if(turn) {
 						button.setX();
-						ttt.boardUpdateX(button.getID());
+						ttt.boardUpdate(button.getID(), "X");
 						turn = false;
 					} else {
 						button.setO();
-						ttt.boardUpdateO(button.getID());
+						ttt.boardUpdate(button.getID(), "O");
 						turn = true;
 					}
-				} 
-				
+				} else if(button.isPressed()) {
+					messageBox("Invalid move!", "Error");
+				}
+
 				if(ttt.winTestX()) {
 					winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
 				}
-				
+
 				if(ttt.winTestO()) {
 					winBox("O is the winner!", "A winrar is you!");
 				}
-				
+
 				if(ttt.tieTest()) {
 					winBox("Draw!", "Tie!");
 				}
-				
+
 			}
 		}
 	}
-		
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
