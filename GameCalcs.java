@@ -17,9 +17,7 @@ public class GameCalcs {
 		gameboard = new String[3][3];
 	}
 
-	public void boardUpdateX(int identifier) {
-		String move = "X";
-
+	public void boardUpdate(int identifier, String move) {
 		switch(identifier) {
 			case 0: gameboard[0][0] = move;
 				break;
@@ -82,33 +80,6 @@ public class GameCalcs {
 		}
 
 		return -1;
-	}
-
-	public void boardUpdateO(int identifier) {
-		String move = "O";
-
-		switch(identifier) {
-		case 0: gameboard[0][0] = move;
-				break;
-		case 1: gameboard[0][1] = move;
-				break;
-		case 2: gameboard[0][2] = move;
-				break;
-		case 3: gameboard[1][0] = move;
-				break;
-		case 4: gameboard[1][1] = move;
-				break;
-		case 5: gameboard[1][2] = move;
-				break;
-		case 6: gameboard[2][0] = move;
-				break;
-		case 7: gameboard[2][1] = move;
-				break;
-		case 8: gameboard[2][2] = move;
-				break;
-		case 9: gameboard[2][3] = move;
-				break;
-		}
 	}
 
 	public int aiUpdateRand(Integer rowNum, Integer colNum) {
