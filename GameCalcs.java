@@ -13,10 +13,12 @@ public class GameCalcs {
 	Integer rowNum = new Integer(0);
 	Integer colNum = new Integer(0);
 
+	//constructor creates gameboard
 	public GameCalcs() {
 		gameboard = new String[3][3];
 	}
 
+	//updates gameboard with proper move and position
 	public void boardUpdate(int identifier, String move) {
 		switch(identifier) {
 			case 0: gameboard[0][0] = move;
@@ -42,6 +44,7 @@ public class GameCalcs {
 		}
 	}
 
+	//translates row/col 
 	public int buttonTranslator(int row, int col) {
 		if(row == 0 && col == 0) {
 			return 0;
