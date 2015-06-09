@@ -122,6 +122,15 @@ public class GUI extends JFrame implements ActionListener {
 				gameRestart();
 			}
 		});
+		
+		JMenuItem detItem = new JMenuItem("Program Details");
+		resItem.setToolTipText("Displays program information.");
+		detItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event1337) {
+				messageBox("Tic Tac Toe Simulator 2k15 version 1.0 \n Coded by Kevin Worsley, William Scully, Elizabeth Dinh", "Information");
+			}
+		});
 
 		//AI toggle switch
 		JCheckBoxMenuItem aiToggle = new JCheckBoxMenuItem("Toggle AI");
@@ -146,8 +155,9 @@ public class GUI extends JFrame implements ActionListener {
 		menu.add(settings);
 
 		file.add(resItem);
+		file.add(detItem);
 		file.add(eItem);
-
+		
 		settings.add(aiToggle);
 		settings.addSeparator();
 		settings.add(kindSet);
@@ -171,8 +181,12 @@ public class GUI extends JFrame implements ActionListener {
 		wingui.setVisible(true);
 	}
 
-	public void messageBox(String message, String title) {
+	public void errorBox(String message, String title) {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void messageBox(String message, String title) {
+		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	//THE BUTTON ACTIONS
@@ -193,7 +207,7 @@ public class GUI extends JFrame implements ActionListener {
 						turn = true;
 					}
 				} else if(button.isPressed()) {
-					messageBox("Invalid move!", "Error");
+					errorBox("Invalid move!", "Error");
 				}
 
 				if(ttt.winTestX()) {
