@@ -1,12 +1,10 @@
 package com.game.ttt;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
 
 public class Button extends JButton {
-	//GameCalcs ttt = new GameCalcs();
+	GameCalcs calc = new GameCalcs();
+
 
 	boolean isPressed;
 	int ident;
@@ -27,22 +25,15 @@ public class Button extends JButton {
 
 	public void setX() {
 		setText("X");
+		setPress(true);
 	}
 
 	public void setO() {
 		setText("O");
-	}
-
-	public void pressedX(int bnum) {
-		//ttt.boardUpdateX(bnum);
-		setX();
-		//ttt.boardPrinter();
 		setPress(true);
 	}
 
-	public void pressedO(int bnum) {
-		//ttt.boardUpdateO(bnum);
-		//ttt.boardPrinter();
-		setO();
+	public int getID() {
+		return ident;
 	}
 }
