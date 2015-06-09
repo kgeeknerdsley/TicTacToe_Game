@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.util.*;
 
 public class GUI extends JFrame implements ActionListener {
-	//instances of other classes in project
+
+	//instances of other classes in proj
 	GameCalcs ttt = new GameCalcs();
 	AIBrain ai = new AIBrain();
 
@@ -68,6 +69,19 @@ public class GUI extends JFrame implements ActionListener {
 		JMenu settings = new JMenu("AI Settings");
 		settings.setMnemonic(KeyEvent.VK_S);
 
+		JMenuItem help = new JMenuItem("Help");
+		help.setMnemonic(KeyEvent.VK_H);
+		help.setToolTipText("Provides game instructions");
+
+		JMenuItem instItem = new JMenuItem("Instructions");
+		instItem.setToolTipText("How to play");
+		instItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event4) {
+				
+			}
+		});
+
 		JMenuItem kindSetting = new JMenuItem("AI Personality");
 		kindSetting.setToolTipText("Changes whether the AI is nice or snarky");
 
@@ -108,7 +122,7 @@ public class GUI extends JFrame implements ActionListener {
 				gameRestart();
 			}
 		});
-
+		
 		//AI toggle switch
 		JCheckBoxMenuItem aiToggle = new JCheckBoxMenuItem("Toggle AI");
 		aiToggle.setDisplayedMnemonicIndex(5); //what do?
@@ -138,6 +152,8 @@ public class GUI extends JFrame implements ActionListener {
 		settings.addSeparator();
 		settings.add(kindSet);
 		settings.add(snarkSet);
+		
+
 
 		setJMenuBar(menu);
 	}
@@ -164,462 +180,38 @@ public class GUI extends JFrame implements ActionListener {
 	//THE BUTTON ACTIONS
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		if(event.getSource() == buttray[0]) { //upper left
-			if(!buttray[0].isPressed()) {
-				if(turn) {
-					//buttray[0].pressedX(0);
-					ttt.boardUpdateX(0);
-					buttray[0].setX();
-					ttt.boardPrinter();
-					buttray[0].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
-					}
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-
-				} else if(turn == false) {
-					if(!buttray[0].isPressed()) {
-						buttray[0].setPress(true);
-
-						//buttray[0].pressedO(0);
-						ttt.boardUpdateO(0);
-						buttray[0].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-							if(ttt.tieTest()) {
-								winBox("Draw!", "Tie!");
-							}
-
+		if(null != event.getSource()) {
+			if(event.getSource() instanceof Button) {
+				Button button = (Button) event.getSource();
+				
+				if(!button.isPressed()) {
+					if(turn) {
+						button.setX();
+						ttt.boardUpdateX(button.getID());
+						turn = false;
+					} else {
+						button.setO();
+						ttt.boardUpdateO(button.getID());
 						turn = true;
 					}
+				} 
+				
+				if(ttt.winTestX()) {
+					winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
 				}
-
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[1]) { //upper middle
-			if(!buttray[1].isPressed()) {
-				if(turn) {
-					//buttray[1].pressedX(1);
-					ttt.boardUpdateX(1);
-					buttray[1].setX();
-					ttt.boardPrinter();
-					buttray[1].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[1].isPressed()) {
-						buttray[1].setPress(true);
-
-						//buttray[1].pressedO(1);
-						ttt.boardUpdateO(1);
-						buttray[1].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-
-						turn = true;
-					}
+				
+				if(ttt.winTestO()) {
+					winBox("O is the winner!", "A winrar is you!");
 				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[2]) { //upper right
-			if(!buttray[2].isPressed()) {
-				if(turn) {
-					//buttray[2].pressedX(2);
-					ttt.boardUpdateX(2);
-					buttray[2].setX();
-					ttt.boardPrinter();
-					buttray[2].setPress(true);
-
-					count += ttt.buttonTally();
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[2].isPressed()) {
-						buttray[2].setPress(true);
-
-						//buttray[2].pressedO(2);
-						ttt.boardUpdateO(2);
-						buttray[2].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							System.out.println("Game over!");
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-							if(ttt.tieTest()) {
-								winBox("Draw!", "Tie!");
-							}
-
-						turn = true;
-					}
+				
+				if(ttt.tieTest()) {
+					winBox("Draw!", "Tie!");
 				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[3]) { //middle left
-			if(!buttray[3].isPressed()) {
-				if(turn) {
-					//buttray[3].pressedX(3);
-					ttt.boardUpdateX(3);
-					buttray[3].setX();
-					ttt.boardPrinter();
-					buttray[3].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[3].isPressed()) {
-						buttray[3].setPress(true);
-
-						//buttray[3].pressedO(3);
-						ttt.boardUpdateO(3);
-						buttray[3].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							System.out.println("Game over!");
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-							if(ttt.tieTest()) {
-								winBox("Draw!", "Tie!");
-							}
-						turn = true;
-					}
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[4]) { //middle middle
-			if(!buttray[4].isPressed()) {
-				if(turn) {
-					//buttray[4].pressedX(4);
-					ttt.boardUpdateX(4);
-					buttray[4].setX();
-					ttt.boardPrinter();
-					buttray[4].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[4].isPressed()) {
-						buttray[4].setPress(true);
-					}
-					//buttray[4].pressedO(4);
-					ttt.boardUpdateO(4);
-					buttray[4].setO();
-					ttt.boardPrinter();
-
-					if(ttt.winTestO()) {
-						winBox("O is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = true;
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[5]) { //middle right
-			if(!buttray[5].isPressed()) {
-				if(turn) {
-					//buttray[5].pressedX(5);
-					ttt.boardUpdateX(5);
-					buttray[5].setX();
-					ttt.boardPrinter();
-					buttray[5].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[5].isPressed()) {
-						buttray[5].setPress(true);
-
-						//buttray[5].pressedO(5);
-						ttt.boardUpdateO(5);
-						buttray[5].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							System.out.println("Game over!");
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-							if(ttt.tieTest()) {
-								winBox("Draw!", "Tie!");
-							}
-						turn = true;
-					}
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[6]) { //bottom left
-			if(!buttray[6].isPressed()) {
-				if(turn) {
-					//buttray[6].pressedX(6);
-					ttt.boardUpdateX(6);
-					buttray[6].setX();
-					ttt.boardPrinter();
-					buttray[6].setPress(true);
-
-					if(ttt.winTestX()) {
-						System.out.println("Game over!");
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[6].isPressed()) {
-						buttray[6].setPress(true);
-
-						//buttray[6].pressedO(6);
-						ttt.boardUpdateO(6);
-						buttray[6].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-							if(ttt.tieTest()) {
-								winBox("Draw!", "Tie!");
-							}
-						turn = true;
-					}
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[7]) { //bottom middle
-			if(!buttray[7].isPressed()) {
-				if(turn) {
-					//buttray[7].pressedX(7);
-					ttt.boardUpdateX(7);
-					buttray[7].setX();
-					ttt.boardPrinter();
-					buttray[7].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[7].isPressed()) {
-						buttray[7].setPress(true);
-					}
-
-					//buttray[7].pressedO(7);
-					ttt.boardUpdateO(7);
-					buttray[7].setO();
-					ttt.boardPrinter();
-
-					if(ttt.winTestO()) {
-						winBox("O is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = true;
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
-			}
-		}
-
-		if(event.getSource() == buttray[8]) { //bottom right
-			if(!buttray[8].isPressed()) {
-				if(turn) {
-					//buttray[8].pressedX(8);
-					ttt.boardUpdateX(8);
-					buttray[8].setX();
-					ttt.boardPrinter();
-					buttray[8].setPress(true);
-
-					if(ttt.winTestX()) {
-						winBox("X is the winner!", "A winrar is you!");
-					}
-
-						if(ttt.tieTest()) {
-							winBox("Draw!", "Tie!");
-						}
-					turn = false;
-
-					if(aiFlag) {
-						if(aiSnark) {
-							statusbar.setText(ai.moveSpeakSnarky());
-						} else {
-							statusbar.setText(ai.moveSpeakNice());
-						}
-					}
-				} else if(turn == false) {
-					if(!buttray[8].isPressed()) {
-						buttray[8].setPress(true);
-
-						//buttray[8].pressedO(8);
-						ttt.boardUpdateO(8);
-						buttray[8].setO();
-						ttt.boardPrinter();
-
-						if(ttt.winTestO()) {
-							System.out.println("Game over!");
-							winBox("O is the winner!", "A winrar is you!");
-						}
-
-							if(ttt.tieTest()) {
-								winBox("Draw!", "Tie!");
-							}
-						turn = true;
-					}
-				}
-			} else {
-				messageBox("Illegal move!", "Oops!");
+				
 			}
 		}
 	}
-
-	//make method to tally the null buttons after each press to trigger the tie test
+		
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
