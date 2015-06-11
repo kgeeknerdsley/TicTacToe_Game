@@ -46,7 +46,7 @@ public class GUI extends JFrame implements ActionListener {
 		add(panel);
 
 		//master window setup
-		setTitle("Tic Tac Toe Simulator 2k15");
+		setTitle("Tic Tac Toe Simulator 2015");
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -128,7 +128,7 @@ public class GUI extends JFrame implements ActionListener {
 		detItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event1337) {
-				messageBox("Tic Tac Toe Simulator 2k15 version 1.0 \n Coded by Kevin Worsley, William Scully, Elizabeth Dinh", "Information");
+				messageBox("Tic Tac Toe Simulator 2015 version 1.0 \n Coded by Kevin Worsley, William Scully, Elizabeth Dinh", "Information");
 			}
 		});
 
@@ -151,17 +151,17 @@ public class GUI extends JFrame implements ActionListener {
 		});
 
 		//menu addition hierarchy (ARE IN ORDER, DO NOT SCREW WITH PLZ)
-		menu.add(file);
-		menu.add(settings);
+		//menu.add(file);
+		//menu.add(settings);
 
-		file.add(resItem);
-		file.add(detItem);
-		file.add(eItem);
+		menu.add(resItem);
+		menu.add(detItem);
+		menu.add(eItem);
 		
-		settings.add(aiToggle);
-		settings.addSeparator();
-		settings.add(kindSet);
-		settings.add(snarkSet);
+		//settings.add(aiToggle);
+		//settings.addSeparator();
+		//settings.add(kindSet);
+		//settings.add(snarkSet);
 
 		setJMenuBar(menu);
 	}
@@ -219,7 +219,7 @@ public class GUI extends JFrame implements ActionListener {
 				}
 
 				if(ttt.tieTest()) {
-					winBox("Draw!", "Tie!");
+					winBox("Tie! You both lost!", "No one is the winrar...");
 				}
 
 			}
