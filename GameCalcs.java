@@ -6,6 +6,7 @@ public class GameCalcs {
 	Random randgen = new Random();
 
 	String gameboard[][];
+	Boolean gameboardBigBoard[][];
 	Boolean winrar = new Boolean(null);
 	Boolean winrarX = new Boolean(null);
 	Boolean winrarO = new Boolean(null);
@@ -15,6 +16,7 @@ public class GameCalcs {
 //Change was done in GameCalcs to make a 9 by 9 grid checker
 	public GameCalcs() {
 		gameboard = new String[9][9];
+		gameboardBigBoard = new String[3][3];
 	}
 
 	public void boardUpdateX(int identifier) {
@@ -428,48 +430,45 @@ public class GameCalcs {
 //Wintests for each sector, X
 	public boolean winTestXTopLeft() {
 		if(gameboard[0][0] == "X" && gameboard[1][0] == "X" && gameboard[2][0] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 		} else if(gameboard[0][1] == "X" && gameboard[1][1] == "X" && gameboard[2][1] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 		} else if(gameboard[0][2] == "X" && gameboard[1][2] == "X" && gameboard[2][2] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 			//Vert
 		} else if(gameboard[0][0] == "X" && gameboard[0][1] == "X" && gameboard[0][2] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 		} else if(gameboard[1][0] == "X" && gameboard[1][1] == "X" && gameboard[1][2] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 		} else if(gameboard[2][0] == "X" && gameboard[2][1] == "X" && gameboard[2][2] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 			//Diag
 		} else if(gameboard[0][0] == "X" && gameboard[1][1] == "X" && gameboard[2][2] == "X") {
-			winrarX = true;
+			gameboardBigBoard[0,0] == true;
 		} else if(gameboard[0][2] == "X" && gameboard[1][1] == "X" && gameboard[2][0] == "X") {
-			winrarX = true;
-		} else {
-			winrarX = false;
+			gameboardBigBoard[0,0] == true;
 		}
-		return winrarX;
 	}
 
 	public boolean winTestXTopCenter() {
 		if(gameboard[3][0] == "X" && gameboard[4][0] == "X" && gameboard[5][0] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 		} else if(gameboard[3][1] == "X" && gameboard[4][1] == "X" && gameboard[5][1] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 		} else if(gameboard[3][2] == "X" && gameboard[4][2] == "X" && gameboard[5][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 			//Vert
 		} else if(gameboard[3][0] == "X" && gameboard[3][1] == "X" && gameboard[3][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 		} else if(gameboard[4][0] == "X" && gameboard[4][1] == "X" && gameboard[4][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 		} else if(gameboard[5][0] == "X" && gameboard[5][1] == "X" && gameboard[5][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 			//Diag
 		} else if(gameboard[3][0] == "X" && gameboard[4][1] == "X" && gameboard[5][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 		} else if(gameboard[3][2] == "X" && gameboard[4][1] == "X" && gameboard[5][0] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,0, true)
 		} else {
 			winrarX = false;
 		}
@@ -478,23 +477,23 @@ public class GameCalcs {
 
 	public boolean winTestXTopRight() {
 		if(gameboard[6][0] == "X" && gameboard[7][0] == "X" && gameboard[8][0] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 		} else if(gameboard[6][1] == "X" && gameboard[7][1] == "X" && gameboard[8][1] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 		} else if(gameboard[6][2] == "X" && gameboard[7][2] == "X" && gameboard[8][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 			//Vert
 		} else if(gameboard[6][0] == "X" && gameboard[6][1] == "X" && gameboard[6][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 		} else if(gameboard[7][0] == "X" && gameboard[7][1] == "X" && gameboard[7][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 		} else if(gameboard[8][0] == "X" && gameboard[8][1] == "X" && gameboard[8][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 			//Diag
 		} else if(gameboard[6][0] == "X" && gameboard[7][1] == "X" && gameboard[8][2] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 		} else if(gameboard[6][2] == "X" && gameboard[7][1] == "X" && gameboard[8][0] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,0, true)
 		} else {
 			winrarX = false;
 		}
@@ -503,23 +502,23 @@ public class GameCalcs {
 
 	public boolean winTestXMiddleLeft() {
 		if(gameboard[0][3] == "X" && gameboard[1][3] == "X" && gameboard[2][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 		} else if(gameboard[0][3] == "X" && gameboard[1][3] == "X" && gameboard[2][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 		} else if(gameboard[0][3] == "X" && gameboard[1][3] == "X" && gameboard[2][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 			//
 		} else if(gameboard[0][3] == "X" && gameboard[0][3] == "X" && gameboard[0][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 		} else if(gameboard[1][3] == "X" && gameboard[1][4] == "X" && gameboard[1][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 		} else if(gameboard[2][3] == "X" && gameboard[2][4] == "X" && gameboard[2][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 			//
 		} else if(gameboard[0][3] == "X" && gameboard[1][4] == "X" && gameboard[2][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 		} else if(gameboard[0][5] == "X" && gameboard[1][4] == "X" && gameboard[2][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,1, true)
 		} else {
 			winrarX = false;
 		}
@@ -528,23 +527,23 @@ public class GameCalcs {
 
 	public boolean winTestXMiddleCenter() {
 		if(gameboard[3][3] == "X" && gameboard[4][3] == "X" && gameboard[5][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 		} else if(gameboard[3][4] == "X" && gameboard[4][4] == "X" && gameboard[5][4] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 		} else if(gameboard[3][5] == "X" && gameboard[4][5] == "X" && gameboard[5][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 			//
 		} else if(gameboard[3][3] == "X" && gameboard[3][4] == "X" && gameboard[3][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 		} else if(gameboard[4][3] == "X" && gameboard[4][4] == "X" && gameboard[4][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 		} else if(gameboard[5][3] == "X" && gameboard[5][4] == "X" && gameboard[5][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 			//
 		} else if(gameboard[3][3] == "X" && gameboard[4][4] == "X" && gameboard[5][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 		} else if(gameboard[3][5] == "X" && gameboard[4][4] == "X" && gameboard[5][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,1, true)
 		} else {
 			winrarX = false;
 		}
@@ -553,23 +552,23 @@ public class GameCalcs {
 
 	public boolean winTestXMiddleRight() {
 		if(gameboard[6][3] == "X" && gameboard[7][3] == "X" && gameboard[8][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 		} else if(gameboard[6][4] == "X" && gameboard[7][4] == "X" && gameboard[8][4] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 		} else if(gameboard[6][5] == "X" && gameboard[7][5] == "X" && gameboard[8][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 			//
 		} else if(gameboard[6][3] == "X" && gameboard[6][4] == "X" && gameboard[6][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 		} else if(gameboard[7][3] == "X" && gameboard[7][4] == "X" && gameboard[7][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 		} else if(gameboard[8][3] == "X" && gameboard[8][4] == "X" && gameboard[8][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 			//
 		} else if(gameboard[6][3] == "X" && gameboard[7][4] == "X" && gameboard[8][5] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 		} else if(gameboard[6][5] == "X" && gameboard[7][4] == "X" && gameboard[8][3] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,1, true)
 		} else {
 			winrarX = false;
 		}
@@ -578,23 +577,23 @@ public class GameCalcs {
 
 	public boolean winTestXBottomLeft() {
 		if(gameboard[0][6] == "X" && gameboard[1][6] == "X" && gameboard[2][6] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 		} else if(gameboard[0][7] == "X" && gameboard[1][7] == "X" && gameboard[2][7] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 		} else if(gameboard[0][8] == "X" && gameboard[1][8] == "X" && gameboard[2][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 			//
 		} else if(gameboard[0][6] == "X" && gameboard[0][7] == "X" && gameboard[0][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 		} else if(gameboard[1][6] == "X" && gameboard[1][7] == "X" && gameboard[1][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 		} else if(gameboard[2][6] == "X" && gameboard[2][7] == "X" && gameboard[2][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 			//
 		} else if(gameboard[0][6] == "X" && gameboard[1][7] == "X" && gameboard[2][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 		} else if(gameboard[0][8] == "X" && gameboard[1][7] == "X" && gameboard[2][6] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(0,2, true)
 		} else {
 			winrarX = false;
 		}
@@ -603,23 +602,23 @@ public class GameCalcs {
 
 	public boolean winTestXBottomCenter() {
 		if(gameboard[3][6] == "X" && gameboard[4][6] == "X" && gameboard[5][6] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 		} else if(gameboard[3][7] == "X" && gameboard[4][7] == "X" && gameboard[5][7] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 		} else if(gameboard[3][8] == "X" && gameboard[4][8] == "X" && gameboard[5][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 			//
 		} else if(gameboard[3][6] == "X" && gameboard[3][7] == "X" && gameboard[3][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 		} else if(gameboard[4][6] == "X" && gameboard[4][7] == "X" && gameboard[4][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 		} else if(gameboard[5][6] == "X" && gameboard[5][7] == "X" && gameboard[5][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 			//
 		} else if(gameboard[3][6] == "X" && gameboard[4][7] == "X" && gameboard[5][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 		} else if(gameboard[3][8] == "X" && gameboard[4][7] == "X" && gameboard[5][6] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(1,2, true)
 		} else {
 			winrarX = false;
 		}
@@ -628,23 +627,23 @@ public class GameCalcs {
 
 	public boolean winTestXBottomRight() {
 		if(gameboard[6][6] == "X" && gameboard[7][6] == "X" && gameboard[8][6] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 		} else if(gameboard[6][7] == "X" && gameboard[7][7] == "X" && gameboard[8][7] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 		} else if(gameboard[6][8] == "X" && gameboard[7][8] == "X" && gameboard[8][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 			//
 		} else if(gameboard[6][6] == "X" && gameboard[6][7] == "X" && gameboard[6][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 		} else if(gameboard[7][6] == "X" && gameboard[7][7] == "X" && gameboard[7][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 		} else if(gameboard[8][6] == "X" && gameboard[8][7] == "X" && gameboard[8][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 			//
 		} else if(gameboard[6][6] == "X" && gameboard[7][7] == "X" && gameboard[8][8] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 		} else if(gameboard[6][8] == "X" && gameboard[7][7] == "X" && gameboard[8][6] == "X") {
-			winrarX = true;
+			//set gameboardBigBoard(2,2, true)
 		} else {
 			winrarX = false;
 		}
@@ -925,8 +924,6 @@ public class GameCalcs {
 		return winrarX;
 	}
 
-
-
 	public int buttonTally() {
 		int buttally = 0;
 
@@ -957,11 +954,11 @@ public class GameCalcs {
 		}
 
 //WE NEED TO FIX THIS
-		if(!winTestX()) {
+		if(!winTestXBigBoard()) {
 			wintestX = true;
 		}
 
-		if(!winTestO()) {
+		if(!winTestOBigBoard()) {
 			wintestO = true;
 		}
 
