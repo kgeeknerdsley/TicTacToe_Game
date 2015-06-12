@@ -56,6 +56,45 @@ public class GUI extends JFrame implements ActionListener {
         statusbar.setBorder(BorderFactory.createEtchedBorder());
         add(statusbar, BorderLayout.SOUTH);
         statusbar.setVisible(true);
+        /*if(ttt.winTestOTopLeft()){
+        	statusbar.setText("The Top Left Square has been won by O!");
+        } if(ttt.winTestOTopCenter()){
+        	statusbar.setText("The Top Center Square has been won by O!");
+        } if(ttt.winTestOTopRight()){
+        	statusbar.setText("The Top Right Square has been won by O!");
+        } if(ttt.winTestOMiddleLeft()){
+        	statusbar.setText("The Mid Left Square has been won by O!");
+        } if(ttt.winTestOMiddleCenter()){
+        	statusbar.setText("The Mid Center Square has been won by O!");
+        } if(ttt.winTestOMiddleRight()){
+        	statusbar.setText("The Mid Right Square has been won by O!");
+        } if(ttt.winTestOBottomLeft()){
+        	statusbar.setText("The Bottom Left Square has been won by O!");
+        } if(ttt.winTestOBottomCenter()){
+        	statusbar.setText("The Bottom Center Square has been won by O!");
+        } if(ttt.winTestOBottomRight()){
+        	statusbar.setText("The Bottom Right Square has been won by O!");
+        }
+        //
+        if(ttt.winTestXTopLeft()){
+        	statusbar.setText("The Top Left Square has been won by X!");
+        } if(ttt.winTestXTopCenter()){
+        	statusbar.setText("The Top Center Square has been won by X!");
+        } if(ttt.winTestXTopRight()){
+        	statusbar.setText("The Top Right Square has been won by X!");
+        } if(ttt.winTestXMiddleLeft()){
+        	statusbar.setText("The Mid Left Square has been won by X!");
+        } if(ttt.winTestXMiddleCenter()){
+        	statusbar.setText("The Mid Center Square has been won by X!");
+        } if(ttt.winTestXMiddleRight()){
+        	statusbar.setText("The Mid Right Square has been won by X!");
+        } if(ttt.winTestXBottomLeft()){
+        	statusbar.setText("The Bottom Left Square has been won by X!");
+        } if(ttt.winTestXBottomCenter()){
+        	statusbar.setText("The Bottom Center Square has been won by X!");
+        } if(ttt.winTestXBottomRight()){
+        	statusbar.setText("The Bottom Right Square has been won by X!");
+        }*/
 	}
 
 	private void initMenuUI() {
