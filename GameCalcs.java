@@ -85,17 +85,15 @@ public class GameCalcs {
 		return -1;
 	}
 
-	public int aiUpdateRand(Integer rowNum, Integer colNum) {
-		if(gameboard[rowNum][colNum] != null) {
-			gameboard[rowNum][colNum] = "O";
+	public int aiRandMove() {
+		int row = randomMove();
+		int col = randomMove();
+		
+		if(gameboard[row][col] == null) {
+			return buttonTranslator(row, col);
 		} else {
-			int newrow = randgen.nextInt(3);
-			int newcol = randgen.nextInt(3);
-
-			aiUpdateRand(newrow, newcol);
-		}
-
-		return buttonTranslator(rowNum, colNum);
+			 return aiRandMove();
+		}		
 	}
 
 	public int getRow() {
