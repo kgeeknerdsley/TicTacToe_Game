@@ -1,5 +1,6 @@
 package com.game.ttt;
 
+//lots o' imports
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -10,9 +11,10 @@ import javax.swing.*;
 public class Button extends JButton {
 	GameCalcs calc = new GameCalcs();
 
-	boolean isPressed;
-	int ident;
+	boolean isPressed; //boolean if button was pressed or not
+	int ident; //identifier for button #
 
+	//all icon instantiation stuff
 	BufferedImage xTemp = null;
 	BufferedImage oTemp = null;
 
@@ -27,14 +29,17 @@ public class Button extends JButton {
 		loadOIcon();
 	}
 
+	//returns press state
 	public boolean isPressed() {
 		return isPressed;
 	}
 
+	//sets press state
 	public void setPress(boolean state) {
 		isPressed = state;
 	}
 
+	//loads the x icon
 	public void loadXIcon() {
 		try {
 			xTemp = ImageIO.read(new File("X.png"));
@@ -45,6 +50,7 @@ public class Button extends JButton {
 		xIcon = new ImageIcon(xTemp);
 	}
 
+	//loads the o icon
 	public void loadOIcon() {
 		try {
 			oTemp = ImageIO.read(new File("O.png"));
@@ -55,18 +61,21 @@ public class Button extends JButton {
 		oIcon = new ImageIcon(oTemp);
 	}
 
+	//sets the button to x
 	public void setX() {
 		//setText("X");
 		setPress(true);
 		setIcon(xIcon);
 	}
 
+	//sets the button to o
 	public void setO() {
 		//setText("O");
 		setPress(true);
 		setIcon(oIcon);
 	}
 
+	//gets actual button number
 	public int getID() {
 		return ident;
 	}
