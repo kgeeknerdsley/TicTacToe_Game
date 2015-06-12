@@ -6,6 +6,8 @@ public class GameCalcs {
 	Random randgen = new Random();
 
 	String gameboard[][];
+	
+	//unused, should remove soon
 	Boolean winrar = new Boolean(null);
 	Boolean winrarX = new Boolean(null);
 	Boolean winrarO = new Boolean(null);
@@ -85,6 +87,7 @@ public class GameCalcs {
 		return -1;
 	}
 
+	//ai RECURSIVE logic for deciding new spot to move
 	public int aiRandMove() {
 		int row = randomMove();
 		int col = randomMove();
@@ -96,19 +99,23 @@ public class GameCalcs {
 		}		
 	}
 
+	//getter for row, delete
 	public int getRow() {
 		return rowNum;
 	}
 
+	//getter for column, delete
 	public int getCol() {
 		return colNum;
 	}
-
+	
+	//random number gen
 	public int randomMove() {
 		int num = randgen.nextInt(3);
 		return num;
 	}
 
+	//tests for X win
 	public boolean winTestX() {
 		if(gameboard[0][0] == "X" && gameboard[1][0] == "X" && gameboard[2][0] == "X") {
 			winrarX = true;
@@ -133,6 +140,7 @@ public class GameCalcs {
 		return winrarX;
 	}
 
+	//tests for O win
 	public boolean winTestO() {
 		if(gameboard[0][0] == "O" && gameboard[1][0] == "O" && gameboard[2][0] == "O") {
 			winrarO = true;
@@ -157,6 +165,7 @@ public class GameCalcs {
 		return winrarO;
 	}
 
+	//obsolete, remove later
 	public int buttonTally() {
 		int buttally = 0;
 
@@ -164,7 +173,8 @@ public class GameCalcs {
 
 		return buttally;
 	}
-
+	
+	//tests for game tie
 	public boolean tieTest() {
 		int fillcount = 0;
 		boolean nulltest = false; // returns true if the test passes (no null values)
@@ -199,6 +209,7 @@ public class GameCalcs {
 
 	}
 
+	//dev method, remove later
 	public void boardPrinter() {
 		String tempboard = "";
 		for(int row = 0; row < gameboard.length; row++) {
