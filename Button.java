@@ -56,13 +56,13 @@ public class Button extends JButton {
 	}
 
 	public void setX() {
-		setText("X");
+		//setText("X");
 		setPress(true);
 		setIcon(xIcon);
 	}
 
 	public void setO() {
-		setText("O");
+		//setText("O");
 		setPress(true);
 		setIcon(oIcon);
 	}
