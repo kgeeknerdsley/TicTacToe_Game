@@ -20,6 +20,7 @@ public class GUI extends JFrame implements ActionListener {
 	boolean aiFlag = false;
 	boolean aiSnark = false; //true if snarky, false if nice
 	boolean aiSmart = false; //true if actually trying, false if just random
+	boolean isWon = false;
 	private JLabel statusbar;
 
 	//creates the initial windows
@@ -46,7 +47,7 @@ public class GUI extends JFrame implements ActionListener {
 		add(panel);
 
 		//master window setup
-		setTitle("Tic Tac Toe Simulator 2015");
+		setTitle("Tic Tac Toe Simulator 2k15");
 		setSize(500,500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -122,13 +123,13 @@ public class GUI extends JFrame implements ActionListener {
 				gameRestart();
 			}
 		});
-		
+
 		JMenuItem detItem = new JMenuItem("Program Details");
 		resItem.setToolTipText("Displays program information.");
 		detItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event1337) {
-				messageBox("Tic Tac Toe Simulator 2015 version 1.0 \n Coded by Kevin Worsley, William Scully, Elizabeth Dinh", "Information");
+				messageBox("Tic Tac Toe Simulator 2k15 version 1.1 \n Coded by Kevin Worsley, William Scully, Elizabeth Dinh", "Information");
 			}
 		});
 
@@ -151,17 +152,17 @@ public class GUI extends JFrame implements ActionListener {
 		});
 
 		//menu addition hierarchy (ARE IN ORDER, DO NOT SCREW WITH PLZ)
-		//menu.add(file);
-		//menu.add(settings);
+		menu.add(file);
+		menu.add(settings);
 
-		menu.add(resItem);
-		menu.add(detItem);
-		menu.add(eItem);
-		
-		//settings.add(aiToggle);
-		//settings.addSeparator();
-		//settings.add(kindSet);
-		//settings.add(snarkSet);
+		file.add(resItem);
+		file.add(detItem);
+		file.add(eItem);
+
+		settings.add(aiToggle);
+		settings.addSeparator();
+		settings.add(kindSet);
+		settings.add(snarkSet);
 
 		setJMenuBar(menu);
 	}
@@ -171,6 +172,7 @@ public class GUI extends JFrame implements ActionListener {
 		dispose();
 		GUI guires = new GUI();
 		guires.setVisible(true);
+		isWon = false;
 	}
 
 	//box that displays win, restarts game
@@ -179,12 +181,13 @@ public class GUI extends JFrame implements ActionListener {
 		dispose();
 		GUI wingui = new GUI();
 		wingui.setVisible(true);
+		isWon = false;
 	}
 
 	public void errorBox(String message, String title) {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.ERROR_MESSAGE);
 	}
-	
+
 	public void messageBox(String message, String title) {
 		JOptionPane.showMessageDialog(null, message, "" + title, JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -201,7 +204,16 @@ public class GUI extends JFrame implements ActionListener {
 						button.setX();
 						ttt.boardUpdate(button.getID(), "X");
 						turn = false;
-					} else {
+						
+						if(aiFlag) {
+							if(aiSnark) {
+								statusbar.setText(ai.moveSpeakSnarky());
+							} else if(!aiSnark) {
+								statusbar.setText(ai.moveSpeakNice());
+							}
+						}
+						
+					}  else {
 						button.setO();
 						ttt.boardUpdate(button.getID(), "O");
 						turn = true;
@@ -212,14 +224,26 @@ public class GUI extends JFrame implements ActionListener {
 
 				if(ttt.winTestX()) {
 					winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
+					isWon = true;
 				}
 
 				if(ttt.winTestO()) {
 					winBox("O is the winner!", "A winrar is you!");
+					isWon = true;
 				}
 
 				if(ttt.tieTest()) {
-					winBox("Tie! You both lost!", "No one is the winrar...");
+					winBox("Draw!", "Tie!");
+					isWon = true;
+				}
+				
+				if(aiFlag && turn == false && !isWon) {
+					int aimove = ttt.aiRandMove();
+
+					buttray[aimove].setO();
+					ttt.boardUpdate(aimove, "O");
+					turn = true;
+
 				}
 
 			}
