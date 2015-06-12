@@ -28,20 +28,4 @@ public class AIBrain {
 		int snum = rgen.nextInt(movesents.length);
 		return movesents[snum];
 	}
-	
-	//currently unimplemented
-	public String endSpeakNice() {
-		String[] niceends = new String[]{"Well done!", "I knew you could do it!", "Excellent job!"};
-		
-		int snum = rgen.nextInt(niceends.length);
-		return niceends[snum];
-	}
-	
-	//currently unimplemented
-	public String endSpeakSnark() {
-		String[] snarkends = new String[]{"I only lost to save you your pride.", "I let you win.", "General jerk sentences."};
-		
-		int snum = rgen.nextInt(snarkends.length);
-		return snarkends[snum];
-	}
 }
