@@ -14,7 +14,7 @@ public class GUI extends JFrame implements ActionListener {
 	Random randg = new Random();
 	JFrame instr = new JFrame();
 
-	Button[] buttray = new Button[9];
+	Button[] buttray = new Button[9]; 
 	int count = 0; //counts when a button is pressed
 	boolean turn = true; //true for X, false for O
 	boolean aiFlag = false;
@@ -242,6 +242,22 @@ public class GUI extends JFrame implements ActionListener {
 
 					buttray[aimove].setO();
 					ttt.boardUpdate(aimove, "O");
+					
+					if(ttt.winTestX()) {
+						winBox("X is the winner!", "A winrar is you!"); //cannot be done in another class, gui screams
+						isWon = true;
+					}
+
+					if(ttt.winTestO()) {
+						winBox("O is the winner!", "A winrar is you!");
+						isWon = true;
+					}
+
+					if(ttt.tieTest()) {
+						winBox("Draw!", "Tie!");
+						isWon = true;
+					}
+					
 					turn = true;
 
 				}
