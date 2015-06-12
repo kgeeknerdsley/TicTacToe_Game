@@ -6,14 +6,6 @@ public class GameCalcs {
 	Random randgen = new Random();
 
 	String gameboard[][];
-	
-	//unused, should remove soon
-	Boolean winrar = new Boolean(null);
-	Boolean winrarX = new Boolean(null);
-	Boolean winrarO = new Boolean(null);
-
-	Integer rowNum = new Integer(0);
-	Integer colNum = new Integer(0);
 
 	//constructor creates gameboard
 	public GameCalcs() {
@@ -98,16 +90,6 @@ public class GameCalcs {
 			 return aiRandMove();
 		}		
 	}
-
-	//getter for row, delete
-	public int getRow() {
-		return rowNum;
-	}
-
-	//getter for column, delete
-	public int getCol() {
-		return colNum;
-	}
 	
 	//random number gen
 	public int randomMove() {
@@ -164,15 +146,6 @@ public class GameCalcs {
 
 		return winrarO;
 	}
-
-	//obsolete, remove later
-	public int buttonTally() {
-		int buttally = 0;
-
-		buttally++;
-
-		return buttally;
-	}
 	
 	//tests for game tie
 	public boolean tieTest() {
@@ -207,17 +180,5 @@ public class GameCalcs {
 			return false;
 		}
 
-	}
-
-	//dev method, remove later
-	public void boardPrinter() {
-		String tempboard = "";
-		for(int row = 0; row < gameboard.length; row++) {
-			for(int col = 0; col < gameboard[0].length; col++) {
-				tempboard += gameboard[row][col];
-			}
-		}
-
-		System.out.println(tempboard);
 	}
 }
